@@ -1,0 +1,10 @@
+@import '../styles/shared';
+
+.container_main{
+	max-width: #{$max-width + ($margin-portrait * 2)};
+	margin: 0 auto;
+	padding: $margin-mobile;
+	@media #{$media-tablet-portrait}{
+		padding: 0 $margin-portrait;
+	}
+}

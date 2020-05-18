@@ -1,0 +1,29 @@
+$media-tablet-portrait: "only screen and (min-width: 768px)";
+$media-tablet-landscape: "only screen and (min-width: 1024px)";
+
+$margin-mobile: 2.4rem;
+$margin-portrait: 4.2rem;
+$max-width: 128.0rem;
+
+%font1{
+	font-family: Montserrat, sans-serif;
+}
+%font1_light{
+	font-family: Montserrat, sans-serif;
+    font-weight: 300;
+}
+%font1_medium{
+	font-family: Montserrat, sans-serif;
+    font-weight: 500;
+}
+%font2{
+    font-family: Merriweather, serif;
+}
+%font2_regular{
+	font-family: Merriweather, serif;
+    font-weight: 400;
+}
+%font2_bold{
+	font-family: Merriweather, serif;
+    font-weight: 700;
+}
