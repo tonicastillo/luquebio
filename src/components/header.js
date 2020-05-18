@@ -1,9 +1,10 @@
 
 import CLink from './cLink'
-import PropTypes from "prop-types"
 import React from "react"
 
 import s from './header.module.scss'
+
+import Menu from './menu'
 
 import Logo from '../images/luque-ecologico-logo-header-small.svg'
 
@@ -15,17 +16,11 @@ const Header = () => (
         to="/"
       >
         <Logo />
+        <span>Luque Ecológico</span>
       </CLink>
     </h1>
+    <Menu />
   </header>
 )
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
-}
 
 export default Header

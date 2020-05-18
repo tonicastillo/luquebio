@@ -1,5 +1,26 @@
 @import '../styles/shared';
 
 .header{
-    border: 5px dotted pink;
+    height: 5.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @media #{$media-tablet-portrait}{
+        height: 8.8rem;
+    }
+    h1{
+        a{
+            display: block;
+            svg{
+                width: 11.5rem;
+                @media #{$media-tablet-portrait}{
+                    width: 17.0rem;
+                }
+            }
+            span{
+                display: none;
+            }
+        }
+        
+    }
 }
