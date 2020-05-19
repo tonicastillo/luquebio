@@ -1,0 +1,117 @@
+@import '../styles/shared';
+
+.container{
+    height: 100%;
+    z-index: 1000;
+    color: $color-enlace;
+    text-transform: uppercase;
+    @extend %font1_light;
+    a{
+        display: block;
+        color: $color-enlace;
+        text-decoration: none;
+        text-transform: uppercase;
+        @extend %font1_medium;
+    }
+    .closed_button{
+        position: relative;
+        width: 7.7rem;
+        padding: 0 $margin-mobile;
+        margin-right: -$margin-mobile;
+        height: 100%;
+        cursor: pointer;
+        @media #{$media-tablet-portrait}{
+            width: 11.7rem;
+            padding: 0 $margin-portrait;
+            margin-right: -$margin-portrait;
+        }
+        .line{
+            display: block;
+            position: absolute;
+            top: calc(50% - 0.1rem);
+            width: 2.9rem;
+            height: .2rem;
+            background-color: #927758;
+            @media #{$media-tablet-portrait}{
+                width: 3.3rem;
+            }
+        }
+    }
+
+    .menu_container{
+        position: fixed;
+        top: 0; right: 0; bottom: 0; left: 0;
+        overflow-y: auto;
+        background-color: white;
+        .menu_content{
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: $margin-mobile;
+            @media #{$media-tablet-portrait}{
+                padding: $margin-portrait;
+            }
+            .close{
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 7.7rem;
+                height: 7.7rem;
+                cursor: pointer;
+                .close_line{
+                    display: block;
+                    position: absolute;
+                    top: calc(50%);
+                    width: 2.9rem;
+                    height: .2rem;
+                    background-color: #927758;
+                    @media #{$media-tablet-portrait}{
+                        width: 3.3rem;
+                    }
+                }
+            }
+            .block1{
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            .block2{   
+                flex: 0;
+            }
+            .b_inicio{
+                font-size: 1.4rem;
+            }
+            .b_productos{
+                font-size: 1.8rem;
+                @extend %font1_semibold;
+                @media #{$media-tablet-portrait}{
+                    font-size: 2.4rem;
+                }
+            }
+            .box{
+                padding: .9rem .7rem 1.3rem;
+                border: 1px solid $color-enlace;
+                strong{
+                    display: block;
+                    padding: .3rem 0 1.7rem 0;
+                    @extend %font1_light;
+                    font-size: 1.4rem;
+                }
+                a{
+                    line-height: 3em;
+                    font-size: 1.4rem;
+                    @media #{$media-tablet-portrait}{
+                        line-height: 1.8em;
+                    }
+                }
+            }
+            .oneline{
+                a{
+
+                }
+            }
+        }
+    }
+}

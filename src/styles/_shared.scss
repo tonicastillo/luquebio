@@ -16,6 +16,10 @@ $max-width: 128.0rem;
 	font-family: Montserrat, sans-serif;
     font-weight: 500;
 }
+%font1_semibold{
+	font-family: Montserrat, sans-serif;
+    font-weight: 600;
+}
 %font2{
     font-family: Merriweather, serif;
 }
@@ -27,3 +31,5 @@ $max-width: 128.0rem;
 	font-family: Merriweather, serif;
     font-weight: 700;
 }
+
+$color-enlace: #927758;

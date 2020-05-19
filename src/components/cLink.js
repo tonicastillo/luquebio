@@ -13,25 +13,18 @@ const transitions = {
 	},
 }
 
-const CLink = React.forwardRef(({ to, title, children, className, transitionName, style, onClick }, ref) => {
+const CLink = React.forwardRef((props, ref) => {
 	let transition;
-	if(transitionName){
-		transition = transitions[transitionName];
+	if(props.transitionName){
+		transition = transitions[props.transitionName];
 	} else {
 		transition = transitions.default;
 	}
 	return (
 		<TransitionLink
-			onClick={onClick}
-			ref={ref}
-			className={className}
-			to={to}
-			title={title}
-			exit={transition.exit}
-			entry={transition.entry}
-			style={style}
+			{...props}
 		>
-			{children}
+			{props.children}
 		</TransitionLink>
 	)
 })
