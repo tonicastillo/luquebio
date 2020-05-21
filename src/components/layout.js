@@ -26,7 +26,7 @@ const Layout = ({ children }) => {
 
   return (
     <div className={s.container_main}>
-      <Header />
+      <Header isHidenOnTop={true} />
       <main>{children}</main>
       <footer>FOOTER</footer>
     </div>

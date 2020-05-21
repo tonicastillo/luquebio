@@ -1,10 +1,12 @@
 @import '../styles/shared';
 
 .header{
+    position: relative;
     height: 5.4rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    z-index: 100;
     @media #{$media-tablet-portrait}{
         height: 8.8rem;
     }

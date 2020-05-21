@@ -6,9 +6,9 @@ import s from './menu.module.scss'
 
 import Flecha1 from './animated_svg/flecha1'
 
-import SocialImageFacebook from '../images/social-facebook.svg'
-import SocialImageIntagram from '../images/social-instagram.svg'
-import SocialImageTwitter from '../images/social-twitter.svg'
+import SvgSocialImageFacebook from '../images/social-facebook.svg'
+import SvgSocialImageIntagram from '../images/social-instagram.svg'
+import SvgSocialImageTwitter from '../images/social-twitter.svg'
 
 const Menu = () => {
     // const [visible, setVisible] = useState(false)
@@ -63,9 +63,9 @@ const Menu = () => {
                             <li><CLink to="/">English</CLink></li>
                         </ul>
                         <ul className={s.block2_social}>
-                            <li><CLink to="/"><span>Facebook</span><SocialImageFacebook /></CLink></li>
-                            <li><CLink to="/"><span>Instagram</span><SocialImageIntagram /></CLink></li>
-                            <li><CLink to="/"><span>Twitter</span><SocialImageTwitter /></CLink></li>
+                            <li><CLink to="/"><span>Facebook</span><SvgSocialImageFacebook /></CLink></li>
+                            <li><CLink to="/"><span>Instagram</span><SvgSocialImageIntagram /></CLink></li>
+                            <li><CLink to="/"><span>Twitter</span><SvgSocialImageTwitter /></CLink></li>
                         </ul>
                         <div className={s.block2_legal}>
                             <CLink to="/">Avisos legales</CLink>
