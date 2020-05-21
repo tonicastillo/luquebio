@@ -46,14 +46,17 @@
         box-shadow: 0 0 2rem rgba(0,0,0,0.2);
         .menu_content{
             position: relative;
-            height: 100%;
             display: flex;
+            max-width: #{$max-width + ($margin-portrait * 2)};
+            height: 100%;
             flex-direction: column;
             justify-content: space-between;
+            margin: 0 auto;
             padding: 0 $margin-mobile;
             @media #{$media-tablet-portrait}{
-                padding: 0 $margin-portrait;
+                    padding: 0 $margin-portrait;
             }
+            
             a{
                 *{
                     vertical-align: middle;
@@ -67,7 +70,7 @@
                 
             }
             .close{
-                position: fixed;
+                position: absolute;
                 top: 0;
                 right: 0;
                 width: #{2.6rem + $margin-mobile * 2};

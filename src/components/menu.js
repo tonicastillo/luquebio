@@ -77,11 +77,6 @@ const Menu = () => {
     )
 }
 
-
-
-
-
-
 const MenuClosedButton = (props) => {
     const { onClickPassedEvent } = props
     const animStyleDefault = {
