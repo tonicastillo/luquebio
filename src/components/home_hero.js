@@ -12,11 +12,13 @@ import SvgSocialImageIntagram from '../images/social-instagram.svg'
 import SvgSocialImageTwitter from '../images/social-twitter.svg'
 
 const HomeHero = () => {
+    
+    // let videoUrl = `${(window.location.protocol !== 'https:' ? 'https:' : 'https')}//luque.tonicastillo.com/site/assets/files/1/luque_ecologico_sin_mosca_con_filtro_oscuro.mp4`
     return (
         <div className={s.container}>
             <div className={s.video_container}>
                 <video data-object-fit="cover" autoPlay loop muted>
-                    <source type="video/mp4" src="http://luque.tonicastillo.com/site/assets/files/1/luque_ecologico_sin_mosca_con_filtro_oscuro.mp4" />
+                    <source type="video/mp4" src="//luque.tonicastillo.com/site/assets/files/1/luque_ecologico_sin_mosca_con_filtro_oscuro.mp4" />
                 </video>
             </div>
             <div className={s.content}>
