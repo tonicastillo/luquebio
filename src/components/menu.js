@@ -3,8 +3,7 @@ import React, { useState } from "react"
 import {useSpring, animated} from 'react-spring'
 
 import s from './menu.module.scss'
-
-import Flecha1 from './animated_svg/flecha1'
+import LinkWithArrow from './cLinkWithArrow'
 
 import SvgSocialImageFacebook from '../images/social-facebook.svg'
 import SvgSocialImageIntagram from '../images/social-instagram.svg'
@@ -137,20 +136,5 @@ const CloseButton = (props) => {
     )
 }
 
-const LinkWithArrow = (props) => {
-    const { pos, type } = props //pos: 'left', 'right', type: big, ...
-    const [hover, setHover] = useState(false)
-    return (
-        <CLink
-            {...props}
-            onMouseMove={() => setHover(true)}
-            onMouseLeave={() => setHover(false)}
-        >
-            { pos === 'left' ? <Flecha1 pos={pos} hover={hover} type={type} /> : null }
-            <span>{props.children}</span>
-            { pos === 'right' ? <Flecha1 pos={pos} hover={hover} type={type} />: null }
-        </CLink>
-    )
-}
 
 export default Menu
