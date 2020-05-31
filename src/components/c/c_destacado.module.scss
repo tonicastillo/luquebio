@@ -1,0 +1,31 @@
+@import "../../styles/shared";
+.container{
+    margin: .8rem 0;
+    @extend %font1_light;
+    line-height: 1.7em;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    @media#{$media-tablet-portrait}{
+        margin: 2.4rem 0;
+        line-height: 1.5em;
+        font-size: 2.7rem;
+    }
+    strong,
+    b{
+        font-weight: 500;
+    }
+    &.has_border_top{
+        padding-top: .8rem;
+        border-top: 1px solid black;
+        @media#{$media-tablet-portrait}{
+            padding-top: 2.4rem;
+        }
+    }
+    &.has_border_bottom{
+        padding-bottom: .8rem;
+        border-bottom: 1px solid black;
+        @media#{$media-tablet-portrait}{
+            padding-bottom: 2.4rem;
+        }
+    }
+}

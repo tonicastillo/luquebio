@@ -7,6 +7,7 @@ module.exports = {
     author: `@tonicq`,
   },
   plugins: [
+    `gatsby-process-wire-source`,
     `gatsby-plugin-react-helmet`,
     // {
     //   resolve: `gatsby-source-filesystem`,

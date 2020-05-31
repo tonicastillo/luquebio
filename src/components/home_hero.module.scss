@@ -2,8 +2,16 @@
 .container{
     position: relative;
     min-height: 60rem;
+    max-height: 82rem;
     height: calc(100vh - #{$margin-portrait} - #{$margin-portrait} - 6rem);
-    max-height: 120rem;
+    @media #{$media-tablet-portrait}{
+        max-height: 72rem;
+        height: calc(80vw);
+    }
+    @media #{$media-tablet-landscape}{
+        height: calc(60vw);
+    }
+    
     color: white;
     .video_container{
         position: absolute;

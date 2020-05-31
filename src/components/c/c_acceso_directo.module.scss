@@ -1,0 +1,56 @@
+@import "../../styles/shared";
+.container{
+    position: relative;
+    
+    >div{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 5rem $margin-int-mobile $margin-int-mobile*0.9 $margin-int-mobile;
+        @extend %font1_light;
+        line-height: 1.8em;
+        font-size: 1.3rem;
+        text-transform: uppercase;
+        color: white;
+        @media#{$media-tablet-portrait}{
+            padding: 6.6rem $margin-int-portrait $margin-int-portrait*0.9 $margin-int-portrait;
+        }
+        &.is_big{
+            min-height: 27.3rem;
+            @media#{$media-tablet-portrait}{
+                min-height: 43.6rem;
+            }
+        }
+        background-color: rgba(0,0,0,0.85);
+        a{
+            display: block;
+            padding-bottom: 1.2rem;
+            font-weight: 500;
+            color: white;
+            text-decoration: none;
+            transition: transform 0.3s;
+            svg{
+                height: 1.2rem;
+                vertical-align: -0.2rem;
+                path{
+                    stroke: white;
+                }
+            }
+            &:hover{
+                transform: translateX(.6rem);
+            }
+        }
+        .imageBackgroundContainer{
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+            object-fit: cover;
+        }
+        >div{
+            @media#{$media-tablet-portrait}{
+                line-height: 1.5em;
+                font-size: 2.5rem;
+            }
+        }
+    }
+    
+}

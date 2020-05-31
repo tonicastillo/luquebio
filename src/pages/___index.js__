@@ -1,0 +1,25 @@
+import React from "react"
+import { Link } from "gatsby"
+
+import SEO from "../components/seo"
+
+import HomeHero from "../components/home_hero"
+
+import Content from "../components/c/content"
+
+
+
+const IndexPage = (props) => {
+  console.log(props)
+  return (
+    <>
+      <SEO title="Home" />
+      <HomeHero />
+
+      {/* <Content content={} /> */}
+      <Link to="/page-2/">Go to page 2</Link>
+    </>
+  )
+  }
+
+export default IndexPage
