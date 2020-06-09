@@ -1,0 +1,8 @@
+@import "../../styles/shared";
+.container{
+    @for $i from 0 through 100 {
+        &.por_#{$i} {
+            height: #{$i*0.8}rem;
+        }
+    }
+}

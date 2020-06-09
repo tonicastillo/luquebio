@@ -1,0 +1,8 @@
+@import "../../styles/shared";
+.container{
+    position: relative;
+    padding: $margin-mobile 0;
+    a{
+        margin-right: $margin-mobile;
+    }
+}

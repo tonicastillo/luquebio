@@ -37,7 +37,9 @@
                 }
             }
             &:hover{
-                transform: translateX(.6rem);
+                @media#{$media-tablet-portrait}{
+                    transform: translateX(.6rem);
+                }
             }
         }
         .imageBackgroundContainer{

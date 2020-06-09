@@ -36,9 +36,9 @@ exports.sourceNodes = async ({ actions, store, cache, createNodeId, createConten
 		});
 	});
 
-	for (const pageIndex in data.pages) {
+	for (const pageIndex in data.pages) { 
 		console.log("Page: " + data.pages[pageIndex].title);
-		//SEO image
+		//SEO image//????
 		if(data.pages[pageIndex].seo && data.pages[pageIndex].seo.image_url){
 			const image_url = data.pages[pageIndex].seo.image_url
 			console.log("SEO Transformando: " + image_url);
@@ -54,54 +54,62 @@ exports.sourceNodes = async ({ actions, store, cache, createNodeId, createConten
 				data.pages[pageIndex].seo.image___NODE = image.id
 			}
 		}
-		//HOME IMAGES
 		
 		//Content image
 		if(data.pages[pageIndex].content){
 			for (const content of data.pages[pageIndex].content) {
-				if(content.data.image_url && content.data.image_url != 'undefined'){
-					console.log("content Transformando: " + content.data.image_url);
-
-					const extension = content.data.image_url.substring(content.data.image_url.lastIndexOf('.')+1, content.data.image_url.length) || content.data.image_url;
-                    
-                    console.log("Extensión: " + extension)
-                    // if(extension === 'jpg' || extension === 'jpeg' || extension === 'png' || extension === 'gif'){
-						const image = await createRemoteFileNode({
-							url: content.data.image_url,
-							cache,
-							store,
-							createNode,
-							createNodeId: id => `image-${id}`,
-						})
-						if (image) {
-							content.data.image___NODE = image.id
-                        }
-                    console.log("Imagen creada ")
-					// }
-				}
-			}
-		}
-		//Content block images
-		if(data.pages[pageIndex].content){
-			for (const content of data.pages[pageIndex].content) {
-				if(content.data.blocks){
-					for (const block of content.data.blocks) {
-						if(block.image_url && block.image_url != 'undefined'){
-							console.log("blocks Transformando: " + block.image_url);
-
-							const image = await createRemoteFileNode({
-								url: block.image_url,
-								cache,
-								store,
-								createNode,
-								createNodeId: id => `image-${id}`,
-							})
-							if (image) {
-								block.image___NODE = image.id
+				if(content.data.images){
+					for (const imageSource of content.data.images) {
+						if(imageSource && imageSource.url && imageSource.url !== 'undefined'){
+							const imageUrl = imageSource.url
+							console.log(`content Transformando: ${imageUrl}`);
+	
+							const extension = imageUrl.substring(imageUrl.lastIndexOf('.')+1, imageUrl.length) || imageUrl;
+							
+							console.log("Extensión: " + extension)
+							if(extension === 'jpg' || extension === 'jpeg' || extension === 'png' || extension === 'gif'){
+								const image = await createRemoteFileNode({
+									url: imageUrl,
+									cache,
+									store,
+									createNode,
+									createNodeId: id => `image-${id}`,
+								})
+								if (image) {
+									imageSource.image___NODE = image.id
+								}
+							console.log("Imagen creada ")
 							}
 						}
 					}
 				}
+				if(content.data.images_mobile){
+					for (const imageSource of content.data.images_mobile) {
+						if(imageSource && imageSource.url && imageSource.url !== 'undefined'){
+							const imageUrl = imageSource.url
+							console.log(`content Transformando: ${imageUrl}`);
+	
+							const extension = imageUrl.substring(imageUrl.lastIndexOf('.')+1, imageUrl.length) || imageUrl;
+							
+							console.log("Extensión: " + extension)
+							if(extension === 'jpg' || extension === 'jpeg' || extension === 'png' || extension === 'gif'){
+								const image = await createRemoteFileNode({
+									url: imageUrl,
+									cache,
+									store,
+									createNode,
+									createNodeId: id => `image-${id}`,
+								})
+								if (image) {
+									imageSource.image___NODE = image.id
+								}
+							console.log("Imagen creada ")
+							}
+						}
+					}
+				}
+				
+				
 			}
 		}
 		

@@ -78,27 +78,38 @@ export const query = graphql`
 					has_border_bottom
 					has_border_top
 					htmltext
-					image_description
-					image_url
 					is_big
 					link_title
 					link_url
-					text
-					image {
-						childImageSharp {
-							fluid(maxWidth: 2240, quality: 50) {
-								...GatsbyImageSharpFluid_withWebp_noBase64
-								aspectRatio
-							}
-						}
+					links {
+						link_title
+						link_url
 					}
+					quantity
+					text
+					
 				}
 			}
 		}
 	}
 `;
 
-
+// image {
+// 	childImageSharp {
+// 		fluid(maxWidth: 2240, quality: 50) {
+// 			...GatsbyImageSharpFluid_withWebp_noBase64
+// 			aspectRatio
+// 		}
+// 	}
+// }
+// image_mobile {
+// 	childImageSharp {
+// 		fluid(maxWidth: 2240, quality: 50) {
+// 			...GatsbyImageSharpFluid_withWebp_noBase64
+// 			aspectRatio
+// 		}
+// 	}
+// }
 const InicioTemplate = (props) => {
   return (
     <>
