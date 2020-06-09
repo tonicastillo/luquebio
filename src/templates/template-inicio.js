@@ -87,7 +87,30 @@ export const query = graphql`
 					}
 					quantity
 					text
-					
+					images {
+						description
+						url
+						image {
+							childImageSharp {
+								fluid(maxWidth: 2240, quality: 50) {
+									...GatsbyImageSharpFluid_withWebp_noBase64
+									aspectRatio
+								}
+							}
+						}
+					}
+					images_mobile {
+						description
+						url
+						image {
+							childImageSharp {
+								fluid(maxWidth: 2240, quality: 50) {
+									...GatsbyImageSharpFluid_withWebp_noBase64
+									aspectRatio
+								}
+							}
+						}
+					}
 				}
 			}
 		}
@@ -112,13 +135,13 @@ export const query = graphql`
 // }
 const InicioTemplate = (props) => {
   return (
-    <>
+    <div class='content_layout'>
       <SEO title="Home" />
       <HomeHero />
 
       <Content content={props.data.pwPages.content} />
       <Link to="/page-2/">Go to page 2</Link>
-    </>
+    </div>
   )
   }
 

@@ -3,6 +3,7 @@ import CDestacado from "./c_destacado"
 import CAccesoDirecto from "./c_acceso_directo"
 import CMargen from "./c_margen"
 import CAccesosDirectosBotones from "./c_accesos_directos_botones"
+import CImagen from './c_imagen'
 
 const Content = props => {
 	const { content } = props
@@ -22,6 +23,9 @@ const Content = props => {
 			case 'accesos_directos_botones':
 				console.log(contentData.data)
 				return (<CAccesosDirectosBotones key={index} data={contentData.data} />)
+			case 'imagen':
+				console.log(contentData.data)
+				return (<CImagen key={index} data={contentData.data} />)
 				
 				
 			// case 'text_highlighted':
@@ -46,7 +50,9 @@ const Content = props => {
 			// 		return (<LocationMap key={index} data={contentData.data} />)
 				
 			default:
-				break;
+				return (
+					<div></div>
+				)
 		}
 	})
 }

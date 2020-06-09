@@ -1,10 +1,10 @@
 @import '../styles/shared';
 
 .container_main{
-	max-width: #{$max-width + ($margin-portrait * 2)};
-	margin: 0 auto;
-	padding: 0 $margin-mobile;
-	@media #{$media-tablet-portrait}{
-		padding: 0 $margin-portrait;
-	}
+	// max-width: #{$max-width + ($margin-portrait * 2)};
+	// margin: 0 auto;
+	// padding: 0 $margin-mobile;
+	// @media #{$media-tablet-portrait}{
+	// 	padding: 0 $margin-portrait;
+	// }
 }

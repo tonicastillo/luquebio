@@ -9,7 +9,7 @@ import Menu from './menu'
 import Logo from '../images/luque-ecologico-logo-header-small.svg'
 
 const Header = (props) => {
-  const { isHidenOnTop } = props //TODO
+  // const { isHidenOnTop } = props //TODO
   return(<header className={s.header}
     >
       <h1>

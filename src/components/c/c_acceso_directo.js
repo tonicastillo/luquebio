@@ -4,8 +4,9 @@ import BackgroundImage from 'gatsby-background-image'
 import LinkWithArrow from '../cLinkWithArrow'
 
 const CAccesoDirecto = (props) => {
-    console.log(props)
-    const { text, link_url, link_title, image, image_description, is_big } = props.data
+    const { text, link_url, link_title, images, is_big } = props.data
+    if(images.length<1) return null
+    const {image, description} = images[0]
     return (
 
         <BackgroundImage
@@ -13,7 +14,7 @@ const CAccesoDirecto = (props) => {
             Tag="section"
             fluid={image.childImageSharp.fluid}
             backgroundColor={`#ccc`}
-            description={image_description}
+            description={description}
         >   <div className={is_big ? s.is_big : ''}>
                 <LinkWithArrow to={link_url} className={'fff'} type="big" pos="right">{link_title}</LinkWithArrow>
                 <div>{text}</div>

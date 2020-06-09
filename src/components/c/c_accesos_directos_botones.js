@@ -9,6 +9,7 @@ const CAccesosDirectosBotones = (props) => {
         <div className={s.container}>
             {links.map((link, key) => (
                 <Button
+                    key={key}
                     to={link.link_url}
                     text={link.link_title}
                 />
