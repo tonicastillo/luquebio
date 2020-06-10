@@ -1,31 +1,53 @@
 @import "../../styles/shared";
 a.container{
     display: inline-flex;
-    padding: $margin-int-mobile;
+    padding: 0 $margin-int-mobile;
     justify-content: space-between;
     align-items: center;
     // min-width: 13.5rem;
     min-height: 4.1rem;
     border: .1rem solid $color-enlace;
     text-decoration: none; 
-    span{
-        display: block;
+    >div{
         margin-right: $margin-int-mobile;
-        line-height: 1em;
-        font-size: 1.3rem;
-        @extend %font1_light;
-        color: $color-enlace;
-        text-transform: uppercase;
-        transition: transform 0.3s;
+        span{
+            display: block;
+            line-height: 1em;
+            font-size: 1.3rem;
+            @extend %font1_light;
+            color: $color-enlace;
+            text-transform: uppercase;
+            transition: transform 0.3s;
+
+        }
+        strong{
+            display: block;
+            line-height: 1em;
+            font-size: 1.2rem;
+            @extend %font1_light;
+            color: $color-enlace;
+            transition: transform 0.3s 0.08s;
+        }
+        span + strong{
+            margin-top: 1.1rem;
+        }
     }
     svg{
         height: 1rem;
     }
     &:hover{
-        span{
+        span,
+        strong{
             @media#{$media-tablet-portrait}{
                 transform: translateX(.6rem);
             }
         }
+    }
+    &.type__arrow{
+
+    }
+    &.type__plus{
+        min-height: 6.5rem;
+
     }
 }

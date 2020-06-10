@@ -1,17 +1,19 @@
 import React from "react"
-import s from './c_accesos_directos_botones.module.scss'
+import s from './c_enlaces_nivel_inferior.module.scss'
 // import LinkWithArrow from '../cLinkWithArrow'
 import Button from '../common/button'
-const CAccesosDirectosBotones = (props) => {
-    console.log("CAccesosDirectosBotones")
+const CEnlacesNivelInferior = (props) => {
     const { links } = props.data
+    console.log(links)
     return (
         <div className={s.container}>
             {links.map((link, key) => (
                 <Button
                     key={key}
                     to={link.link_url}
-                    title={link.link_title}
+                    type="plus"
+                    title={link.link_text}
+                    text={link.link_title}
                 />
             ))}
         </div>
@@ -19,4 +21,4 @@ const CAccesosDirectosBotones = (props) => {
 }
 
 
-export default CAccesosDirectosBotones
+export default CEnlacesNivelInferior

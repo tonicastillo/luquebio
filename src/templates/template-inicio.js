@@ -78,12 +78,15 @@ export const query = graphql`
 					has_border_bottom
 					has_border_top
 					htmltext
+					htmltext_col1
+					htmltext_col2
 					is_big
 					link_title
 					link_url
 					links {
 						link_title
 						link_url
+						link_text
 					}
 					quantity
 					text
@@ -135,7 +138,7 @@ export const query = graphql`
 // }
 const InicioTemplate = (props) => {
   return (
-    <div class='content_layout'>
+    <div className='content_layout'>
       <SEO title="Home" />
       <HomeHero />
 
@@ -143,6 +146,6 @@ const InicioTemplate = (props) => {
       <Link to="/page-2/">Go to page 2</Link>
     </div>
   )
-  }
+}
 
 export default InicioTemplate

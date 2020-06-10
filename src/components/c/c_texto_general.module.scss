@@ -1,0 +1,38 @@
+@import "../../styles/shared";
+.container{
+    margin-top: 1.8em;
+    @extend %font2_regular;
+    line-height: 1.8em;
+    font-size: 1.2rem;
+    @media#{$media-tablet-portrait}{
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        font-size: 1.3rem;
+    }
+    >div{
+        p{
+            margin-bottom: 1.8em;
+        }
+        @media#{$media-tablet-portrait}{
+            width: calc(50% - #{$margin-int-portrait * 0.5});
+        }
+        &:first-child{
+            @media#{$media-tablet-portrait}{
+               margin-right: $margin-int-portrait;
+            }
+        }
+        strong{
+            font-weight: 700;
+        }
+        a{
+            text-decoration: none;
+            font-weight: 700;
+            color: $color-enlace;
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
+}
