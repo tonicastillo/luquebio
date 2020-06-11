@@ -9,6 +9,7 @@ import Menu from './menu'
 import Logo from '../images/luque-ecologico-logo-header-small.svg'
 
 const Header = (props) => {
+  const { pageContext } = props
   // const { isHidenOnTop } = props //TODO
   return(<header className={s.header}
     >
@@ -20,7 +21,7 @@ const Header = (props) => {
           <span>Luque Ecológico</span>
         </CLink>
       </h1>
-      <Menu />
+      <Menu pageContext={pageContext} />
     </header>
   )
 }

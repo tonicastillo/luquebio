@@ -13,7 +13,10 @@ import Header from "./header"
 import './layout.scss'
 import s from './layout.module.scss'
 
-const Layout = ({ children }) => {
+const Layout = (props) => {
+  const { children, pageContext } = props
+  console.log("Layout props:")
+  console.log(props)
   // const data = useStaticQuery(graphql`
   //   query SiteTitleQuery {
   //     site {
@@ -26,7 +29,7 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Header isHidenOnTop={true} />
+      <Header isHidenOnTop={true} pageContext={pageContext} />
       {children}
     </>
   )

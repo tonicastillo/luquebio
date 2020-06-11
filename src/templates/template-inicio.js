@@ -143,7 +143,6 @@ const InicioTemplate = (props) => {
       <HomeHero />
 
       <Content content={props.data.pwPages.content} />
-      <Link to="/page-2/">Go to page 2</Link>
     </div>
   )
 }

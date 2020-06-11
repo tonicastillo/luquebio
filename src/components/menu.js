@@ -1,15 +1,45 @@
 import CLink from './cLink'
 import React from "react"
 import {useSpring, animated} from 'react-spring'
-
+import { useStaticQuery, graphql } from "gatsby"
 import s from './menu.module.scss'
 import LinkWithArrow from './cLinkWithArrow'
+
+import _ from 'lodash'
 
 import SvgSocialImageFacebook from '../images/social-facebook.svg'
 import SvgSocialImageIntagram from '../images/social-instagram.svg'
 import SvgSocialImageTwitter from '../images/social-twitter.svg'
 
-const Menu = () => {
+const Menu = (props) => {
+    const { processwire } = useStaticQuery(
+        graphql`
+          query {
+            processwire {
+                submenus {
+                  title
+                  pwid
+                  lang
+                }
+                pages {
+                  title
+                  pwid
+                  page_url
+                  submenu {
+                    pwid
+                  }
+                  page_template
+                  parentpage {
+                    page_template
+                  }
+                }
+            }
+          }
+        `
+      )
+    console.log("Menu props:")
+    console.log(props)
+    console.log(processwire)
     // const [visible, setVisible] = useState(false)
 
     const mainMenuStyleClosed = {
@@ -36,23 +66,22 @@ const Menu = () => {
                         <LinkWithArrow to="/" className={`${s.b_inicio} ${s.b_flecha_a_la_izquierda}`} pos="left" type="big">Inicio</LinkWithArrow>
                         <LinkWithArrow to="/" className={`${s.b_productos} ${s.b_flecha_a_la_derecha}`} pos="right" type="big">Nuestros Productos</LinkWithArrow>
                         <div className={s.boxes}>
-                            <div className={s.box}>
-                                <strong>Somos</strong>
-                                <LinkWithArrow to="/" className={`${s.b_flecha_a_la_derecha} ${s.b_flecha_pequena}`} pos="right">Tradición e historia</LinkWithArrow>
-                                <LinkWithArrow to="/" className={`${s.b_flecha_a_la_derecha} ${s.b_flecha_pequena}`} pos="right">Familiar</LinkWithArrow>
-                                <LinkWithArrow to="/" className={`${s.b_flecha_a_la_derecha} ${s.b_flecha_pequena}`} pos="right">Valores</LinkWithArrow>
-                                <LinkWithArrow to="/" className={`${s.b_flecha_a_la_derecha} ${s.b_flecha_pequena}`} pos="right">Comunidad</LinkWithArrow>
-                                <LinkWithArrow to="/" className={`${s.b_flecha_a_la_derecha} ${s.b_flecha_pequena}`} pos="right">Calidad</LinkWithArrow>
-                            </div>
-                            <div className={s.box}>
-                                <strong>Ecológico</strong>
-                                <LinkWithArrow to="/" className={`${s.b_flecha_a_la_derecha} ${s.b_flecha_pequena}`} pos="right">Medio ambiente</LinkWithArrow>
-                                <LinkWithArrow to="/" className={`${s.b_flecha_a_la_derecha} ${s.b_flecha_pequena}`} pos="right">Biodiversidad</LinkWithArrow>
-                            </div>
+                            { _.filter(processwire.submenus, {lang: props.pageContext.lang}).map(submenu => (
+                                <div className={s.box} key={submenu.pwid}>
+                                    <strong>{submenu.title}</strong>
+                                    { _.filter(processwire.pages, {submenu: {pwid: submenu.pwid}}).map(page => (
+
+                                        <LinkWithArrow key={page.pwid} to={page.page_url} className={`${s.b_flecha_a_la_derecha} ${s.b_flecha_pequena}`} pos="right">{page.title}</LinkWithArrow>))
+                                    }
+                                </div>
+                            )) }
+                            
+                            
                         </div>
                         <div className={s.oneline}>
-                            <LinkWithArrow to="/" className={`${s.b_flecha_a_la_derecha}`} pos="right" type="big">Visítanos</LinkWithArrow>
-                            <LinkWithArrow to="/" className={`${s.b_flecha_a_la_derecha}`} pos="right" type="big">Contacto</LinkWithArrow>
+                            { _.filter(processwire.pages, {page_template: 'GENERAL', parentpage: {page_template: 'INICIO'}}).map(page => (
+                                <LinkWithArrow key={page.pwid} to={page.page_url} className={`${s.b_flecha_a_la_derecha}`} pos="right" type="big">{page.title}</LinkWithArrow>
+                            ))}
                         </div>
                     </div>
                     <div className={s.block2}>

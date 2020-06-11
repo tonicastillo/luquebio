@@ -67,7 +67,7 @@ const Content = props => {
 				
 			default:
 				return (
-					<div>HOLA: {contentData.type}</div>
+					<div key={index}>HOLA: {contentData.type}</div>
 				)
 		}
 	})
