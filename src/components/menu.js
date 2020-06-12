@@ -16,6 +16,10 @@ const Menu = (props) => {
         graphql`
           query {
             processwire {
+                langs {
+                    title
+                    code
+                }
                 submenus {
                   title
                   pwid
@@ -87,9 +91,9 @@ const Menu = (props) => {
                     </div>
                     <div className={s.block2}>
                         <ul className={s.block2_langs}>
-                            <li><CLink to="/">Español</CLink></li>
-                            <li><CLink to="/">Français</CLink></li>
-                            <li><CLink to="/">English</CLink></li>
+                            { processwire.langs.map(lang => (
+                                <li><CLink to={_.find(props.pageContext.versions, {lang: lang.code}).page_url}>{lang.title}</CLink></li>
+                            ))}
                         </ul>
                         <ul className={s.block2_social}>
                             <li><CLink to="/"><span>Facebook</span><SvgSocialImageFacebook /></CLink></li>
