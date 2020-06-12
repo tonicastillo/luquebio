@@ -65,8 +65,8 @@ import Content from "../components/c/content"
 
 
 export const query = graphql`
-	query($path: String!){
-		pwPages(page_url: {eq: $path}) {
+	query($path: String!, $lang: String!, ){
+		pwPages(page_url: {eq: $path}, lang: {eq: $lang}) {
 			title
 			pwid
 			page_url
@@ -140,7 +140,7 @@ const InicioTemplate = (props) => {
   return (
     <div className='content_layout'>
       <SEO title="Home" />
-      <HomeHero />
+      <HomeHero pageContext={props.pageContext} />
 
       <Content content={props.data.pwPages.content} />
     </div>

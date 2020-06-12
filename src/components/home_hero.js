@@ -1,7 +1,9 @@
 import CLink from './cLink'
 import React, { useState, useRef } from "react"
 import {useTransition, useSpring, useChain, config, useTrail, animated} from 'react-spring'
+import { useStaticQuery, graphql } from "gatsby"
 import { useMeasure } from "react-use"
+import _ from 'lodash'
 
 import 'objectFitPolyfill'
 
@@ -13,8 +15,33 @@ import SvgSocialImageFacebook from '../images/social-facebook.svg'
 import SvgSocialImageIntagram from '../images/social-instagram.svg'
 import SvgSocialImageTwitter from '../images/social-twitter.svg'
 
-const HomeHero = () => {
-    
+const HomeHero = (props) => {
+    const { processwire } = useStaticQuery(
+        graphql`
+          query {
+            processwire {
+                submenus {
+                  title
+                  pwid
+                  lang
+                }
+                pages {
+                  title
+                  pwid
+                  lang
+                  page_url
+                  submenu {
+                    pwid
+                  }
+                  page_template
+                  parentpage {
+                    page_template
+                  }
+                }
+            }
+          }
+        `
+      )
     // let videoUrl = `${(window.location.protocol !== 'https:' ? 'https:' : 'https')}//luque.tonicastillo.com/site/assets/files/1/luque_ecologico_sin_mosca_con_filtro_oscuro.mp4`
     return (
         <div className={s.container}>
@@ -31,37 +58,12 @@ const HomeHero = () => {
                 <div className={s.main_block}>
                     <h2>AcEITES Y VINAGRES PROCEDENTES <br />DE CULTIVO ECOLÓGICO</h2>
                     <nav>
-                        <LinkBox
-                            title="Somos"
-                            links={[
-                                {
-                                    title: 'Tradición e historia'
-                                },
-                                {
-                                    title: 'FAMILIAR'
-                                },
-                                {
-                                    title: 'VALORES'
-                                },
-                                {
-                                    title: 'COMUNIDAD'
-                                },
-                                {
-                                    title: 'CALIDAD'
-                                },
-                            ]}
-                        />
-                        <LinkBox
-                            title="Ecológico"
-                            links={[
-                                {
-                                    title: 'Medio ambiente'
-                                },
-                                {
-                                    title: 'Biodiversidad'
-                                },
-                            ]}
-                        />
+                        { _.filter(processwire.submenus, {lang: props.pageContext.lang}).map(submenu => (
+                            <LinkBox
+                                title={submenu.title}
+                                links={_.filter(processwire.pages, {submenu: {pwid: submenu.pwid}, lang: props.pageContext.lang})}
+                            />
+                        )) }
                     </nav>
                 </div>
                 <div className={s.bottom_block}>
@@ -125,7 +127,7 @@ const LinkBox = (props) => {
                     {linkTrail.map((trail, i) => (
                         <animated.li
                             key={i}
-                            style={trail} ><LinkWithArrow to="/" pos="right" >{links[i].title}</LinkWithArrow></animated.li>
+                            style={trail} ><LinkWithArrow to={links[i].page_url} pos="right" >{links[i].title}</LinkWithArrow></animated.li>
                     ))}
                 </ul>
             </div>

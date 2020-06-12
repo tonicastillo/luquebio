@@ -25,6 +25,7 @@ const Menu = (props) => {
                   title
                   pwid
                   page_url
+                  lang
                   submenu {
                     pwid
                   }
@@ -69,7 +70,7 @@ const Menu = (props) => {
                             { _.filter(processwire.submenus, {lang: props.pageContext.lang}).map(submenu => (
                                 <div className={s.box} key={submenu.pwid}>
                                     <strong>{submenu.title}</strong>
-                                    { _.filter(processwire.pages, {submenu: {pwid: submenu.pwid}}).map(page => (
+                                    { _.filter(processwire.pages, {submenu: {pwid: submenu.pwid}, lang: props.pageContext.lang}).map(page => (
 
                                         <LinkWithArrow key={page.pwid} to={page.page_url} className={`${s.b_flecha_a_la_derecha} ${s.b_flecha_pequena}`} pos="right">{page.title}</LinkWithArrow>))
                                     }
@@ -79,7 +80,7 @@ const Menu = (props) => {
                             
                         </div>
                         <div className={s.oneline}>
-                            { _.filter(processwire.pages, {page_template: 'GENERAL', parentpage: {page_template: 'INICIO'}}).map(page => (
+                            { _.filter(processwire.pages, {page_template: 'GENERAL', parentpage: {page_template: 'INICIO'}, lang: props.pageContext.lang}).map(page => (
                                 <LinkWithArrow key={page.pwid} to={page.page_url} className={`${s.b_flecha_a_la_derecha}`} pos="right" type="big">{page.title}</LinkWithArrow>
                             ))}
                         </div>
