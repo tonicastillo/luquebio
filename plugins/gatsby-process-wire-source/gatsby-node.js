@@ -112,6 +112,62 @@ exports.sourceNodes = async ({ actions, store, cache, createNodeId, createConten
 				
 			}
 		}
+		if(data.pages[pageIndex].content_pop){
+			for (const content of data.pages[pageIndex].content_pop) {
+				if(content.data.images){
+					for (const imageSource of content.data.images) {
+						if(imageSource && imageSource.url && imageSource.url !== 'undefined'){
+							const imageUrl = imageSource.url
+							console.log(`content Transformando: ${imageUrl}`);
+	
+							const extension = imageUrl.substring(imageUrl.lastIndexOf('.')+1, imageUrl.length) || imageUrl;
+							
+							console.log("Extensión: " + extension)
+							if(extension === 'jpg' || extension === 'jpeg' || extension === 'png' || extension === 'gif'){
+								const image = await createRemoteFileNode({
+									url: imageUrl,
+									cache,
+									store,
+									createNode,
+									createNodeId: id => `image-${id}`,
+								})
+								if (image) {
+									imageSource.image___NODE = image.id
+								}
+							console.log("Imagen creada ")
+							}
+						}
+					}
+				}
+				if(content.data.images_mobile){
+					for (const imageSource of content.data.images_mobile) {
+						if(imageSource && imageSource.url && imageSource.url !== 'undefined'){
+							const imageUrl = imageSource.url
+							console.log(`content Transformando: ${imageUrl}`);
+	
+							const extension = imageUrl.substring(imageUrl.lastIndexOf('.')+1, imageUrl.length) || imageUrl;
+							
+							console.log("Extensión: " + extension)
+							if(extension === 'jpg' || extension === 'jpeg' || extension === 'png' || extension === 'gif'){
+								const image = await createRemoteFileNode({
+									url: imageUrl,
+									cache,
+									store,
+									createNode,
+									createNodeId: id => `image-${id}`,
+								})
+								if (image) {
+									imageSource.image___NODE = image.id
+								}
+							console.log("Imagen creada ")
+							}
+						}
+					}
+				}
+				
+				
+			}
+		}
 		
 	}
 

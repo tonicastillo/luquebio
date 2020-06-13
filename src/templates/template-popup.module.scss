@@ -1,0 +1,29 @@
+@import "../styles/shared";
+.containter{
+    
+    
+}
+.background{
+    position: fixed;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background-color: rgba(0,0,0, .75);
+    backdrop-filter: blur(0.4rem);
+}
+.pop_window{
+    position: fixed;
+    top: $margin-mobile; right: $margin-mobile; left: $margin-mobile;
+    max-height: calc(100vh - $margin-mobile);
+    padding: $margin-int-mobile;
+    overflow-y: auto;
+    background-color: white;
+    @media only screen and (min-width: 1024px){
+
+    }
+    @media #{$media-tablet-portrait}{
+        top: $margin-portrait; right: $margin-portrait; left: auto;
+        width: 100%;
+        max-width: 68.4rem;
+        max-height: calc(100vh - $margin-portrait);
+        padding: $margin-int-portrait;
+    }
+}

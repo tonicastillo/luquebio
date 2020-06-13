@@ -29,7 +29,9 @@ exports.createPages = async ({ graphql, actions }) => {
 						title
 						page_template
 						childrenpages
-						
+						parentpage{
+							page_url
+						}
 					}
 				}
 			}
@@ -47,7 +49,7 @@ exports.createPages = async ({ graphql, actions }) => {
 		// const templateFile = path.resolve(`src/templates/template-${page.page_template.toLowerCase()}.js`)
 		let templateName = `${page.page_template}`
 		templateName = templateName.toLowerCase() // === 'INICIO' ? 'inicio' : 'general'
-		if(templateName!=='inicio' && templateName!=='general'){
+		if(templateName!=='inicio' && templateName!=='general' && templateName!=='popup'){
 			templateName='general'
 		}
 
@@ -60,8 +62,9 @@ exports.createPages = async ({ graphql, actions }) => {
 				component: templateFile,
 				context: {
 					...page,
-					versions
-				}
+					versions,
+					pathParent: templateName==='popup'?page.parentpage.page_url:''
+				},
 			});
 		} else {
 			console.log(`Falta Url para ${page.title}`);

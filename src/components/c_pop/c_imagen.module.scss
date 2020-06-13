@@ -1,15 +1,3 @@
 @import "../../styles/shared";
 .container{
-    .image_mobile{
-        display: block;
-        @media#{$media-tablet-portrait}{
-            display: none;
-        }
-    }
-    .image_tablet{
-        display: none;
-        @media#{$media-tablet-portrait}{
-            display: block;
-        }
-    }
 }
