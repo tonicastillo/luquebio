@@ -92,7 +92,7 @@ const Menu = (props) => {
                     <div className={s.block2}>
                         <ul className={s.block2_langs}>
                             { processwire.langs.map(lang => (
-                                <li><CLink to={_.find(props.pageContext.versions, {lang: lang.code}).page_url}>{lang.title}</CLink></li>
+                                <li key={lang.code} ><CLink to={_.find(props.pageContext.versions, {lang: lang.code}).page_url}>{lang.title}</CLink></li>
                             ))}
                         </ul>
                         <ul className={s.block2_social}>

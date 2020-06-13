@@ -3,10 +3,8 @@ import { Link } from "gatsby"
 
 import SEO from "../components/seo"
 
-import HomeHero from "../components/home_hero"
-
 import Content from "../components/c/content"
-
+import ContentPop from "../components/c_pop/content_pop"
 
 export const query = graphql`
 	query($path: String!){
@@ -69,6 +67,7 @@ const GeneralTemplate = (props) => {
     <div className='content_layout'>
       <SEO title="General" />
       <Content content={props.data.pwPages.content} />
+      <ContentPop content={props.data.pwPages.content_pop} />
     </div>
   )
 }
