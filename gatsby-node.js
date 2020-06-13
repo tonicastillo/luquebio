@@ -47,9 +47,10 @@ exports.createPages = async ({ graphql, actions }) => {
 		// const templateFile = path.resolve(`src/templates/template-${page.page_template.toLowerCase()}.js`)
 		let templateName = `${page.page_template}`
 		templateName = templateName.toLowerCase() // === 'INICIO' ? 'inicio' : 'general'
-		if(templateName!=='initio' || templateName!=='general'){
+		if(templateName!=='inicio' && templateName!=='general'){
 			templateName='general'
 		}
+
 		const templateFile = path.resolve(`src/templates/template-${templateName}.js`)
 		console.log("--Creando página: "+page.page_url)
 		if(page.page_url){
