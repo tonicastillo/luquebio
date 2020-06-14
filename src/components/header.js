@@ -9,20 +9,30 @@ import Menu from './menu'
 import Logo from '../images/luque-ecologico-logo-header-small.svg'
 
 const Header = (props) => {
-  const { pageContext } = props
+  const { pageContext, dummy } = props
+  console.log('pageContext')
+  if(pageContext)
+    console.log(pageContext.page_template)
   // const { isHidenOnTop } = props //TODO
-  return(<header className={s.header}
+  return(<header className={`${s.header} ${dummy ? s.header_dummy :''} ${pageContext && pageContext.page_template === 'POPUP' ? s.header_hidden :''}`}
     >
-      <h1>
-        <CLink
-          to="/"
-        >
-          <Logo />
-          <span>Luque Ecológico</span>
-        </CLink>
-      </h1>
-      <Menu pageContext={pageContext} />
+      <div className={s.header_content}>
+        <h1>
+          <CLink
+            to="/"
+          >
+            <Logo />
+            <span>Luque Ecológico</span>
+          </CLink>
+        </h1>
+        { !dummy ?
+        <Menu pageContext={pageContext} />
+        :
+        <div />
+        }
+      </div>
     </header>
+    
   )
 }
   

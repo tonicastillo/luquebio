@@ -35,6 +35,16 @@
             min-height: 8rem;
 
         }
+        .pop_header_title{
+            flex: 1;
+            padding: $margin-int-portrait $margin-int-portrait $margin-int-portrait 0;
+            @extend %font1;
+            font-weight: 400;
+            line-height: 1.8em;
+            font-size: 1rem;
+            color: #808080;
+            text-transform: uppercase;
+        }
         
         .pop_header_close{
             >a{

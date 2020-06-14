@@ -7,6 +7,7 @@ import ContentPop from "../components/c_pop/content_pop"
 import s from "./template-popup.module.scss"
 import CloseButton from '../components/animated_svg/close_botton'
 import CLink from '../components/cLink'
+import Header from "../components/header"
 
 export const query = graphql`
 	query($path: String!, $pathParent: String!){
@@ -94,16 +95,19 @@ const GeneralTemplate = (props) => {
 	return (
 		<div className='content_layout'>
 			<SEO title="General" />
-			<div><Content content={props.data.pwPages.content} /></div>
+			<div>
+				<Header dummy={true} />
+				<Content content={props.data.pwPages.content} />
+			</div>
 			<div className={s.background} />
 			<div className={s.pop_window}>
 				<div className={s.pop_header}>
 					<div className={s.pop_header_title}>
-						Aquí val el títulos
+						{props.data.pwPages.title}
 					</div>
 					<div className={s.pop_header_close}>
 						<CLink to={props.data.pwPages.page_url}>
-							<CloseButton onClickPassedEvent={() => { console.log("click")}} />
+							<CloseButton onClickPassedEvent={null} />
 						</CLink>
 					</div>
 				</div>

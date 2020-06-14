@@ -63,8 +63,8 @@ a{
 .content_layout{
 	max-width: #{$max-width + ($margin-portrait * 2)};
 	margin: 0 auto;
-	padding: 0 $margin-mobile 1rem;
+	padding: 5.4rem $margin-mobile 1rem;
 	@media #{$media-tablet-portrait}{
-		padding: 0 $margin-portrait 1rem;
+		padding: 8.8rem $margin-portrait 1rem;
 	}
 }
