@@ -11,6 +11,8 @@ import SvgSocialImageFacebook from '../images/social-facebook.svg'
 import SvgSocialImageIntagram from '../images/social-instagram.svg'
 import SvgSocialImageTwitter from '../images/social-twitter.svg'
 
+import CloseButton from './animated_svg/close_botton'
+
 const Menu = (props) => {
     const { processwire } = useStaticQuery(
         graphql`
@@ -140,35 +142,7 @@ const MenuClosedButton = (props) => {
     )
 }
 
-const CloseButton = (props) => {
-    const { onClickPassedEvent } = props
-    const animStyleDefault = {
-        transform1: `rotate(45deg)`,
-        transform2: `rotate(-45deg)`
-    }
-    const [animStyle, setAnimStyle] = useSpring(() => (animStyleDefault))
-    return(
-        <animated.div className={s.close}
-            onMouseMove={() => setAnimStyle({
-                transform1: `rotate(135deg)`,
-                transform2: `rotate(-135deg)`
-            })}
-            onMouseLeave={() => setAnimStyle(animStyleDefault)}
-            onClick={onClickPassedEvent}
-        >
-            <animated.div
-                className={s.close_line}
-                style={{transform: animStyle.transform1}}
-                
-            />
-            <animated.div
-                className={s.close_line}
-                style={{transform: animStyle.transform2}}
-            />
-        </animated.div>
-        
-    )
-}
+
 
 
 export default Menu

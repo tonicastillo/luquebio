@@ -68,32 +68,7 @@
                 }
                 
             }
-            .close{
-                position: absolute;
-                top: 0;
-                right: 0;
-                width: #{2.6rem + $margin-mobile * 2};
-                height: #{2.6rem + $margin-mobile * 2};
-                @media #{$media-tablet-portrait}{
-                    width: #{2.8rem + $margin-portrait * 2};
-                    height: #{2.8rem + $margin-portrait * 2};
-                }
-                cursor: pointer;
-                .close_line{
-                    display: block;
-                    position: absolute;
-                    left: calc(50% - 1.84rem);
-                    top: calc(50% - .1rem);
-                    width: 3.68rem;
-                    // transform: rotate(45deg);
-                    height: .2rem;
-                    background-color: #927758;
-                    @media #{$media-tablet-portrait}{
-                        left: calc(50% - 1.98rem);
-                        width: 3.96rem;
-                    }
-                }
-            }
+            
             .block1{
                 display: flex;
                 flex-direction: column;
