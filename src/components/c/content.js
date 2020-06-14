@@ -15,9 +15,6 @@ const Content = props => {
 	return content.map((contentData, index) => {
 		switch (contentData.type) {
 			case 'destacado':
-
-				console.log('--destacado')
-				console.log(contentData.data)
 				return (<CDestacado key={index} data={contentData.data} />)
 			case 'acceso_directo':
 				console.log('--acceso_directo')
@@ -40,8 +37,6 @@ const Content = props => {
 				console.log(contentData.data)
 				return (<CEnlacesNivelInferior key={index} data={contentData.data} />)	
 			case 'texto_general':
-				console.log('--texto_general')
-				console.log(contentData.data)
 				return (<CTextoGeneral key={index} data={contentData.data} />)
 					
 			// case 'text_highlighted':

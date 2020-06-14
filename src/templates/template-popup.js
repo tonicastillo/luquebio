@@ -9,6 +9,8 @@ import CloseButton from '../components/animated_svg/close_botton'
 import CLink from '../components/cLink'
 import Header from "../components/header"
 
+const isBrowser = typeof window !== 'undefined'
+
 export const query = graphql`
 	query($path: String!, $pathParent: String!){
 		pwPages(page_url: {eq: $pathParent}) {
@@ -72,18 +74,23 @@ export const query = graphql`
 			content_pop {
 				type
 				data {
-				  images {
-					description
-					url
-					image {
-						childImageSharp {
-							fluid(maxWidth: 2240, quality: 50) {
-								...GatsbyImageSharpFluid_withWebp_noBase64
-								aspectRatio
+					has_border_bottom
+					has_border_top
+					htmltext
+					quantity
+					images {
+						description
+						url
+						image {
+							childImageSharp {
+								fluid(maxWidth: 2240, quality: 50) {
+									...GatsbyImageSharpFluid_withWebp_noBase64
+									aspectRatio
+								}
 							}
 						}
 					}
-				  }
+					
 				}
 			}
 		}
@@ -92,13 +99,20 @@ export const query = graphql`
 `;
 
 const GeneralTemplate = (props) => {
+	
 	return (
 		<div className='content_layout'>
 			<SEO title="General" />
-			<div>
-				<Header dummy={true} />
-				<Content content={props.data.pwPages.content} />
-			</div>
+			{
+				isBrowser ? 
+				<div>
+					<Header dummy={true} />
+					<Content content={props.data.pwPages.content} />
+				</div>
+				:
+				null
+			}
+			
 			<div className={s.background} />
 			<div className={s.pop_window}>
 				<div className={s.pop_header}>
@@ -111,7 +125,10 @@ const GeneralTemplate = (props) => {
 						</CLink>
 					</div>
 				</div>
-				<ContentPop content={props.data.popupPage.content_pop} />
+				<div className={s.pop_content}>
+					<h2>{props.data.popupPage.title}</h2>
+					<ContentPop content={props.data.popupPage.content_pop} />
+				</div>
 			</div>
 		</div>
 	)
