@@ -1,5 +1,7 @@
 import React from "react"
-import TransitionLink from "gatsby-plugin-transition-link"
+// import TransitionLink from "gatsby-plugin-transition-link"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
+
 
 // const transitions = {
 
@@ -20,12 +22,32 @@ const CLink = React.forwardRef((props, ref) => {
 	// } else {
 	// 	transition = transitions.default;
 	// }
+	const colors = ['#882433', '#91785b']
+	const color= colors[Math.floor(Math.random() * colors.length)]
+	if(props.isPaintDrip)
+		return (
+			<AniLink
+				paintDrip
+				hex={color}
+
+				direction="up"
+				duration={1}
+				{...props}
+			>
+				{props.children}
+			</AniLink>
+		)
 	return (
-		<TransitionLink
+		<AniLink
+			cover
+			
+			direction="up"
+			bg={color}
+			duration={1}
 			{...props}
 		>
 			{props.children}
-		</TransitionLink>
+		</AniLink>
 	)
 })
 export default CLink;

@@ -3,7 +3,7 @@ import Img from 'gatsby-image'
 import s from './c_imagen.module.scss'
 
 const CImagen = ( props ) => {
-	const { images, images_mobile } = props.data
+	const { images, images_mobile, width } = props.data
     if(images.length<1) return null
 	const {image, description} = images[0]
 	return(
@@ -15,6 +15,12 @@ const CImagen = ( props ) => {
 				backgroundColor="#666666"
 				objectFit="contain"
 				backgroundColor="white"
+				style={
+					width ? {
+						width: `${width}%`
+					} :
+					{}
+				}
 			/>
 		</div>
 	)

@@ -1,5 +1,8 @@
 @import "../../styles/shared";
 .container{
+    >*{
+        margin: 0 auto;
+    }
     .image_mobile{
         display: block;
         @media#{$media-tablet-portrait}{

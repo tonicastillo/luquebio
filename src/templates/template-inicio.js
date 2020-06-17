@@ -93,6 +93,7 @@ export const query = graphql`
 					images {
 						description
 						url
+						width
 						image {
 							childImageSharp {
 								fluid(maxWidth: 2240, quality: 50) {

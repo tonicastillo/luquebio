@@ -10,6 +10,7 @@ const LinkWithArrow = (props) => {
             {...props}
             onMouseMove={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
+            isPaintDrip
         >
             { pos === 'left' ? <Flecha1 pos={pos} hover={hover} type={type} /> : null }
             <span>{props.children}</span>

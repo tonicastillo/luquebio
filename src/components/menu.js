@@ -44,9 +44,9 @@ const Menu = (props) => {
           }
         `
       )
-    console.log("Menu props:")
-    console.log(props)
-    console.log(processwire)
+    // console.log("Menu props:")
+    // console.log(props)
+    // console.log(processwire)
     // const [visible, setVisible] = useState(false)
 
     const mainMenuStyleClosed = {
@@ -56,7 +56,7 @@ const Menu = (props) => {
         transform: `translate3d(0vw,0,0)`,
     }
     const [maimMenuStyle, setMainMenuStyle] = useSpring(() => (mainMenuStyleClosed))
-
+    const closeMenu = () => { setMainMenuStyle(mainMenuStyleClosed)}
     return(
         <div className={s.container}
         >
@@ -68,17 +68,17 @@ const Menu = (props) => {
                 }}
             >
                 <animated.nav className={s.menu_content}>
-                    <CloseButton onClickPassedEvent={() => { setMainMenuStyle(mainMenuStyleClosed)}} />
+                    <CloseButton onClickPassedEvent={closeMenu} />
                     <div className={s.block1}>
-                        <LinkWithArrow to="/" className={`${s.b_inicio} ${s.b_flecha_a_la_izquierda}`} pos="left" type="big">Inicio</LinkWithArrow>
-                        <LinkWithArrow to="/" className={`${s.b_productos} ${s.b_flecha_a_la_derecha}`} pos="right" type="big">Nuestros Productos</LinkWithArrow>
+                        <LinkWithArrow to="/" onClick={closeMenu} className={`${s.b_inicio} ${s.b_flecha_a_la_izquierda}`} pos="left" type="big">Inicio</LinkWithArrow>
+                        <LinkWithArrow to="/" onClick={closeMenu} className={`${s.b_productos} ${s.b_flecha_a_la_derecha}`} pos="right" type="big">Nuestros Productos</LinkWithArrow>
                         <div className={s.boxes}>
                             { _.filter(processwire.submenus, {lang: props.pageContext.lang}).map(submenu => (
                                 <div className={s.box} key={submenu.pwid}>
                                     <strong>{submenu.title}</strong>
                                     { _.filter(processwire.pages, {submenu: {pwid: submenu.pwid}, lang: props.pageContext.lang}).map(page => (
 
-                                        <LinkWithArrow key={page.pwid} to={page.page_url} className={`${s.b_flecha_a_la_derecha} ${s.b_flecha_pequena}`} pos="right">{page.title}</LinkWithArrow>))
+                                        <LinkWithArrow onClick={closeMenu} key={page.pwid} to={page.page_url} className={`${s.b_flecha_a_la_derecha} ${s.b_flecha_pequena}`} pos="right">{page.title}</LinkWithArrow>))
                                     }
                                 </div>
                             )) }
@@ -87,14 +87,14 @@ const Menu = (props) => {
                         </div>
                         <div className={s.oneline}>
                             { _.filter(processwire.pages, {page_template: 'GENERAL', parentpage: {page_template: 'INICIO'}, lang: props.pageContext.lang}).map(page => (
-                                <LinkWithArrow key={page.pwid} to={page.page_url} className={`${s.b_flecha_a_la_derecha}`} pos="right" type="big">{page.title}</LinkWithArrow>
+                                <LinkWithArrow  onClick={closeMenu} key={page.pwid} to={page.page_url} className={`${s.b_flecha_a_la_derecha}`} pos="right" type="big">{page.title}</LinkWithArrow>
                             ))}
                         </div>
                     </div>
                     <div className={s.block2}>
                         <ul className={s.block2_langs}>
                             { processwire.langs.map(lang => (
-                                <li key={lang.code} ><CLink to={_.find(props.pageContext.versions, {lang: lang.code}).page_url}>{lang.title}</CLink></li>
+                                <li key={lang.code} onClick={closeMenu}><CLink to={_.find(props.pageContext.versions, {lang: lang.code}).page_url}>{lang.title}</CLink></li>
                             ))}
                         </ul>
                         <ul className={s.block2_social}>
@@ -103,7 +103,7 @@ const Menu = (props) => {
                             <li><CLink to="/"><span>Twitter</span><SvgSocialImageTwitter /></CLink></li>
                         </ul>
                         <div className={s.block2_legal}>
-                            <CLink to="/">Avisos legales</CLink>
+                            <CLink to="/" onClick={closeMenu} >Avisos legales</CLink>
                         </div>
                     </div>
                 </animated.nav>
