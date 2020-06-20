@@ -24,7 +24,7 @@ const CLink = React.forwardRef((props, ref) => {
 	// }
 	const colors = ['#882433', '#91785b']
 	const color= colors[Math.floor(Math.random() * colors.length)]
-	if(props.isPaintDrip)
+	if(props.ispaintdrip==="true")
 		return (
 			<AniLink
 				paintDrip

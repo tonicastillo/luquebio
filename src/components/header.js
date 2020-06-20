@@ -10,9 +10,7 @@ import Logo from '../images/luque-ecologico-logo-header-small.svg'
 
 const Header = (props) => {
   const { pageContext, dummy } = props
-  console.log('pageContext')
-  if(pageContext)
-    console.log(pageContext.page_template)
+  //onsole.log('pageContext')
   // const { isHidenOnTop } = props //TODO
   return(<header className={`${s.header} ${dummy ? s.header_dummy :''} ${pageContext && pageContext.page_template === 'POPUP' ? s.header_hidden :''}`}
     >

@@ -9,32 +9,32 @@ import CTextoGeneral from './c_texto_general'
 
 const Content = props => {
 	const { content } = props
-	console.log(props)
-	console.log('----')
+	//onsole.log(props)
+	//onsole.log('----')
 	
 	return content.map((contentData, index) => {
 		switch (contentData.type) {
 			case 'destacado':
 				return (<CDestacado key={index} data={contentData.data} />)
 			case 'acceso_directo':
-				console.log('--acceso_directo')
-				console.log(contentData.data)
+				//onsole.log('--acceso_directo')
+				//onsole.log(contentData.data)
 				return (<CAccesoDirecto key={index} data={contentData.data} />)
 			case 'margen':
-				console.log('---margen')
-				console.log(contentData.data)
+				//onsole.log('---margen')
+				//onsole.log(contentData.data)
 				return (<CMargen key={index} data={contentData.data} />)
 			case 'accesos_directos_botones':
-				console.log('--accesos_directos_botones')
-				console.log(contentData.data)
+				//onsole.log('--accesos_directos_botones')
+				//onsole.log(contentData.data)
 				return (<CAccesosDirectosBotones key={index} data={contentData.data} />)
 			case 'imagen':
-				console.log('--imagen')
-				console.log(contentData.data)
+				//onsole.log('--imagen')
+				//onsole.log(contentData.data)
 				return (<CImagen key={index} data={contentData.data} />)
 			case 'enlaces_nivel_inferior':
-				console.log('--enlaces_nivel_inferior')
-				console.log(contentData.data)
+				//onsole.log('--enlaces_nivel_inferior')
+				//onsole.log(contentData.data)
 				return (<CEnlacesNivelInferior key={index} data={contentData.data} />)	
 			case 'texto_general':
 				return (<CTextoGeneral key={index} data={contentData.data} />)

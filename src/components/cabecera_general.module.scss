@@ -1,0 +1,64 @@
+@import '../styles/shared';
+.container{
+    position: relative;
+    margin-bottom: $margin-mobile;
+    @media #{$media-tablet-portrait}{
+        margin-bottom: $margin-portrait;
+    }
+    .images{
+        position: absolute;
+        top: 0; right: 0; bottom: 0; left: 0;
+        >div{
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+        }
+    }
+    .text{
+        position: relative;
+        display: flex;
+        min-height: 30.6rem;
+        flex-direction: column;
+        justify-content: flex-end;
+        @media #{$media-tablet-portrait}{
+            min-height: 43.6rem;
+            justify-content: flex-start;
+        }
+        h1,
+        h2{
+            padding: 0 $margin-int-mobile 0 0;
+            margin-left: -.15rem;
+            @extend %font1;
+            line-height: 1.8em;
+            font-weight: 400;
+            color: white;
+            text-transform: uppercase;
+            @media #{$media-tablet-portrait}{
+                margin-left: -.2rem;
+                padding: 0 $margin-int-portrait 0 0;
+            }
+        }
+        h1{
+            padding-top: 2.4rem;
+            padding-bottom: 1.4rem;
+            font-weight: 300;
+            font-size: 1.3rem;
+            @media #{$media-tablet-portrait}{
+                width: 60%;
+                padding-top: 3.2rem;
+                padding-bottom: 0.8rem;
+                font-weight: 400;
+                font-size: 1.4rem;
+            }
+        }
+        h2{
+            padding-top: 1.4rem;
+            padding-bottom: 2.4rem;
+            font-size: 1.4rem;
+            @media #{$media-tablet-portrait}{
+                padding-top: 0.8rem;
+                width: 60%;
+                font-size: 2.0rem;
+            }
+        }
+    }
+}

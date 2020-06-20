@@ -4,7 +4,7 @@ import s from './c_enlaces_nivel_inferior.module.scss'
 import Button from '../common/button'
 const CEnlacesNivelInferior = (props) => {
     const { links } = props.data
-    console.log(links)
+    //onsole.log(links)
     return (
         <div className={s.container}>
             {links.map((link, key) => (

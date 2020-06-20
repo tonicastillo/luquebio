@@ -44,9 +44,9 @@ const Menu = (props) => {
           }
         `
       )
-    // console.log("Menu props:")
-    // console.log(props)
-    // console.log(processwire)
+    //onsole.log("Menu props:")
+    //onsole.log(props)
+    //onsole.log(processwire)
     // const [visible, setVisible] = useState(false)
 
     const mainMenuStyleClosed = {

@@ -3,7 +3,7 @@ import s from './c_accesos_directos_botones.module.scss'
 // import LinkWithArrow from '../cLinkWithArrow'
 import Button from '../common/button'
 const CAccesosDirectosBotones = (props) => {
-    console.log("CAccesosDirectosBotones")
+    //onsole.log("CAccesosDirectosBotones")
     const { links } = props.data
     return (
         <div className={s.container}>

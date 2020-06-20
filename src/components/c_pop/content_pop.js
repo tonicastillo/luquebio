@@ -8,8 +8,8 @@ import CImagen from './c_imagen'
 import CTextoGeneral from './c_texto_general'
 const ContentPop = props => {
 	const { content } = props
-	console.log('ContentPop')
-	console.log(content)
+	//onsole.log('ContentPop')
+	//onsole.log(content)
 	if(content){
 		return content.map((contentData, index) => {
 			switch (contentData.type) {

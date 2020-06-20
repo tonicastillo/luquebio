@@ -15,8 +15,8 @@ import s from './layout.module.scss'
 
 const Layout = (props) => {
   const { children, pageContext } = props
-  console.log("Layout props:")
-  console.log(props)
+  //onsole.log("Layout props:")
+  //onsole.log(props)
   // const data = useStaticQuery(graphql`
   //   query SiteTitleQuery {
   //     site {

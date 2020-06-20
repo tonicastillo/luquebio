@@ -3,8 +3,8 @@ import s from './c_margen.module.scss'
 
 const cMargen = (props) => {
     const { quantity } = props.data
-    console.log(s)
-    console.log(quantity)
+    //onsole.log(s)
+    //onsole.log(quantity)
     return (
         <div className={`${s.container} ${s[`por_${quantity}`]}`} />
     )
