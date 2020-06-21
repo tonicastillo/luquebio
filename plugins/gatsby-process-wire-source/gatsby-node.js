@@ -193,29 +193,29 @@ exports.sourceNodes = async ({ actions, store, cache, createNodeId, createConten
 					}
 				}
 			}
-			for (const item of data.pages[pageIndex].cabecera.images_mobile) {
-				if(item && item.url && item.url !== 'undefined'){
-					const imageUrl = item.url
-					console.log(`content Transformando: ${imageUrl}`);
+			// for (const item of data.pages[pageIndex].cabecera.images_mobile) {
+			// 	if(item && item.url && item.url !== 'undefined'){
+			// 		const imageUrl = item.url
+			// 		console.log(`content Transformando: ${imageUrl}`);
 
-					const extension = imageUrl.substring(imageUrl.lastIndexOf('.')+1, imageUrl.length) || imageUrl;
+			// 		const extension = imageUrl.substring(imageUrl.lastIndexOf('.')+1, imageUrl.length) || imageUrl;
 					
-					console.log("Extensión: " + extension)
-					if(extension === 'jpg' || extension === 'jpeg' || extension === 'png' || extension === 'gif'){
-						const image = await createRemoteFileNode({
-							url: imageUrl,
-							cache,
-							store,
-							createNode,
-							createNodeId: id => `image-${id}`,
-						})
-						if (image) {
-							item.image___NODE = image.id
-						}
-					console.log("Imagen creada ")
-					}
-				}
-			}
+			// 		console.log("Extensión: " + extension)
+			// 		if(extension === 'jpg' || extension === 'jpeg' || extension === 'png' || extension === 'gif'){
+			// 			const image = await createRemoteFileNode({
+			// 				url: imageUrl,
+			// 				cache,
+			// 				store,
+			// 				createNode,
+			// 				createNodeId: id => `image-${id}`,
+			// 			})
+			// 			if (image) {
+			// 				item.image___NODE = image.id
+			// 			}
+			// 		console.log("Imagen creada ")
+			// 		}
+			// 	}
+			// }
 		}
 				
 	}
