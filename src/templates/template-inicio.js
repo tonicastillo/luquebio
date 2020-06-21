@@ -72,6 +72,19 @@ export const query = graphql`
 			page_url
 			page_template
 			lang
+			home_hero_text
+			home_hero_background_video {
+				url
+			}
+			home_hero_background_image{
+				image {
+					childImageSharp {
+						resize(width: 720) {
+						  src
+						}
+					  }
+				}
+			}
 			content {
 				type
 				data {
@@ -80,8 +93,8 @@ export const query = graphql`
 					htmltext
 					htmltext_col1
 					htmltext_col2
-					is_big
 					link_title
+					is_big
 					link_url
 					links {
 						link_title
@@ -140,8 +153,15 @@ export const query = graphql`
 const InicioTemplate = (props) => {
   return (
     <div className='content_layout'>
-      <SEO title="Home" />
-      <HomeHero pageContext={props.pageContext} />
+    	<SEO title="Home" />
+		<HomeHero
+	  		homeData={{
+				image: props.data.pwPages.home_hero_background_image,
+				video: props.data.pwPages.home_hero_background_video,
+				text: props.data.pwPages.home_hero_text,
+			}}
+	  		pageContext={props.pageContext}
+		/>
 
       <Content content={props.data.pwPages.content} />
     </div>

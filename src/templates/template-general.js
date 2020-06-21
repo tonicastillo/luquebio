@@ -41,9 +41,9 @@ export const query = graphql`
 					htmltext
 					htmltext_col1
 					htmltext_col2
-					is_big
 					link_title
 					link_url
+					is_big
 					links {
 						link_title
 						link_url

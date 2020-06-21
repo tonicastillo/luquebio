@@ -26,6 +26,7 @@ exports.sourceNodes = async ({ actions, store, cache, createNodeId, createConten
 	//Crea página como node raiz para poder filtrar
 	data.pages.forEach(page => {
 		console.log(page.title)
+		console.log(page.content)
 		createNode({
 			...page,
 			id: createNodeId(page.pwid+page.lang), // required by Gatsby
@@ -130,6 +131,7 @@ exports.sourceNodes = async ({ actions, store, cache, createNodeId, createConten
 									store,
 									createNode,
 									createNodeId: id => `image-${id}`,
+									
 								})
 								if (image) {
 									imageSource.image___NODE = image.id
@@ -216,6 +218,53 @@ exports.sourceNodes = async ({ actions, store, cache, createNodeId, createConten
 			// 		}
 			// 	}
 			// }
+		}
+		if(data.pages[pageIndex].home_hero_background_image){
+			const item = data.pages[pageIndex].home_hero_background_image
+			const imageUrl = item.url
+			console.log(`content Transformando: ${imageUrl}`);
+
+			const extension = imageUrl.substring(imageUrl.lastIndexOf('.')+1, imageUrl.length) || imageUrl;
+			
+			console.log("Extensión: " + extension)
+			if(extension === 'jpg' || extension === 'jpeg' || extension === 'png' || extension === 'gif'){
+				const image = await createRemoteFileNode({
+					url: imageUrl,
+					cache,
+					store,
+					createNode,
+					createNodeId: id => `image-${id}`,
+				})
+				if (image) {
+					item.image___NODE = image.id
+				}
+				console.log("Imagen creada ")
+			}
+			
+		}
+		if(data.pages[pageIndex].home_hero_background_video){
+			const item = data.pages[pageIndex].home_hero_background_video
+			const imageUrl = item.url
+			console.log(`content Transformando: ${imageUrl}`);
+
+			const extension = imageUrl.substring(imageUrl.lastIndexOf('.')+1, imageUrl.length) || imageUrl;
+			
+			console.log("Extensión: " + extension)
+			if(extension === 'mp4'){
+				const image = await createRemoteFileNode({
+					url: imageUrl,
+					cache,
+					store,
+					createNode,
+					createNodeId: id => `localFile-${id}`,
+					ext: ".mp4",
+				})
+				if (image) {
+					item.localFile___NODE = image.id
+				}
+				console.log("Video creado ")
+			}
+			
 		}
 				
 	}

@@ -4,7 +4,6 @@ import {useTransition, useSpring, useChain, config, useTrail, animated} from 're
 import { useStaticQuery, graphql } from "gatsby"
 import { useMeasure } from "react-use"
 import _ from 'lodash'
-
 import 'objectFitPolyfill'
 
 import s from './home_hero.module.scss'
@@ -46,12 +45,17 @@ const HomeHero = (props) => {
           }
         `
       )
-    // let videoUrl = `${(window.location.protocol !== 'https:' ? 'https:' : 'https')}//luque.tonicastillo.com/site/assets/files/1/luque_ecologico_sin_mosca_con_filtro_oscuro.mp4`
+      const { homeData } = props
+      console.log(homeData)
+      const videoUrlOriginal = homeData.video.url.replace('http:','')
+          
+        let videoUrl= `${(typeof window !== 'undefined' && window.location.protocol !== 'https:' ? 'https:' : 'https')}${videoUrlOriginal}`
     return (
         <div className={s.container}>
             <div className={s.video_container}>
                 <video data-object-fit="cover" autoPlay loop muted>
-                    <source type="video/mp4" src="//luque.tonicastillo.com/site/assets/files/1/luque_ecologico_sin_mosca_con_filtro_oscuro70.mp4" />
+                    <source type="video/mp4" src={videoUrl} />
+                    <img src={homeData.image.image.childImageSharp.resize.src} />
                 </video>
             </div>
             <div className={s.content}>
@@ -60,10 +64,11 @@ const HomeHero = (props) => {
                     <span>Luque Ecológico</span>
                 </div>
                 <div className={s.main_block}>
-                    <h2>AcEITES Y VINAGRES PROCEDENTES <br />DE CULTIVO ECOLÓGICO</h2>
+                    <h2 dangerouslySetInnerHTML={{__html:homeData.text}} />
                     <nav>
                         { _.filter(processwire.submenus, {lang: props.pageContext.lang}).map(submenu => (
                             <LinkBox
+                                key={submenu.title}
                                 title={submenu.title}
                                 links={_.filter(processwire.pages, {submenu: {pwid: submenu.pwid}, lang: props.pageContext.lang})}
                             />
