@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react"
 // import _ from 'lodash'
 import Img from 'gatsby-image/withIEPolyfill'
 import {useSpring, animated} from 'react-spring'
+import { easeCubicOut } from 'd3-ease'
 
 import 'objectFitPolyfill'
 
@@ -12,12 +13,7 @@ import s from './cabecera_general.module.scss'
 
 const CabeceraGeneral = (props) => {
     const { cabecera, title } = props
-    if(!cabecera){
-        return null
-    }
-    if(!cabecera.images){
-        return null
-    }
+    
     const [time, setTime] = useState(0);
     
     useEffect(() => {
@@ -34,7 +30,39 @@ const CabeceraGeneral = (props) => {
             setTime(time + 1)
         }
     }
-                                                                                                                                                 
+    
+    
+    const animStyleH1 = useSpring(
+        {
+            from: { transform: "translate(-60%,0)" },
+            to: { transform: "translate(0%,0)" },
+            config: {
+                duration: 1700,
+                easing: easeCubicOut
+            },
+        }
+    )
+    const animStyleH2 = useSpring(
+        {
+            from: {
+                transform: "translate(-100%,0)"
+            },
+            to: {
+                transform: "translate(0%,0)"
+        },
+            config: {
+                duration: 2400,
+                easing: easeCubicOut
+            },
+        }
+    )
+    if(!cabecera){
+        return null
+    }
+    if(!cabecera.images){
+        return null
+    }
+    
     return (
         <div className={s.container}>
             <div className={s.images}>
@@ -43,8 +71,8 @@ const CabeceraGeneral = (props) => {
                 ))}
             </div>
             <div className={s.text}>
-                <h1>{title}</h1>
-                <h2>{cabecera.text}</h2>
+                <animated.h1 style={animStyleH1}>{title}</animated.h1>
+                <animated.h2 style={animStyleH2}>{cabecera.text}</animated.h2>
             </div>
         </div>
     )
