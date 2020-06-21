@@ -12,9 +12,12 @@ import s from './cabecera_general.module.scss'
 
 const CabeceraGeneral = (props) => {
     const { cabecera, title } = props
-    console.log('CabeceraGeneral')                                                                                                                                                   
-    console.log(title)
-
+    if(!cabecera){
+        return null
+    }
+    if(!cabecera.images){
+        return null
+    }
     const [time, setTime] = useState(0);
     
     useEffect(() => {
@@ -54,6 +57,7 @@ const CabeceraGeneralImagen = (props) => {
         {
             opacity: active ? 1 : 0,
             transform: active ? 'scale(1)' : 'scale(1.04)',
+            config: { duration: 2000 },
         }
     )
     return(
