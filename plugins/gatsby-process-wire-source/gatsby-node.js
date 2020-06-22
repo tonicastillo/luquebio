@@ -242,30 +242,30 @@ exports.sourceNodes = async ({ actions, store, cache, createNodeId, createConten
 			}
 			
 		}
-		if(data.pages[pageIndex].home_hero_background_video){
-			const item = data.pages[pageIndex].home_hero_background_video
-			const imageUrl = item.url
-			console.log(`content Transformando: ${imageUrl}`);
+		// if(data.pages[pageIndex].home_hero_background_video){
+		// 	const item = data.pages[pageIndex].home_hero_background_video
+		// 	const imageUrl = item.url
+		// 	console.log(`content Transformando: ${imageUrl}`);
 
-			const extension = imageUrl.substring(imageUrl.lastIndexOf('.')+1, imageUrl.length) || imageUrl;
+		// 	const extension = imageUrl.substring(imageUrl.lastIndexOf('.')+1, imageUrl.length) || imageUrl;
 			
-			console.log("Extensión: " + extension)
-			if(extension === 'mp4'){
-				const image = await createRemoteFileNode({
-					url: imageUrl,
-					cache,
-					store,
-					createNode,
-					createNodeId: id => `localFile-${id}`,
-					ext: ".mp4",
-				})
-				if (image) {
-					item.localFile___NODE = image.id
-				}
-				console.log("Video creado ")
-			}
+		// 	console.log("Extensión: " + extension)
+		// 	if(extension === 'mp4'){
+		// 		const image = await createRemoteFileNode({
+		// 			url: imageUrl,
+		// 			cache,
+		// 			store,
+		// 			createNode,
+		// 			createNodeId: id => `localFile-${id}`,
+		// 			ext: ".mp4",
+		// 		})
+		// 		if (image) {
+		// 			item.localFile___NODE = image.id
+		// 		}
+		// 		console.log("Video creado ")
+		// 	}
 			
-		}
+		// }
 				
 	}
 

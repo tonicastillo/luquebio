@@ -49,7 +49,7 @@ const HomeHero = (props) => {
       console.log(homeData)
       const videoUrlOriginal = homeData.video.url.replace('http','')
           
-        let videoUrl= `${(typeof window !== 'undefined' && window.location.protocol !== 'https:' ? 'https:' : 'https')}${videoUrlOriginal}`
+        let videoUrl= `${(typeof window !== 'undefined' && window.location.protocol !== 'https:' ? 'http' : 'https')}${videoUrlOriginal}`
     return (
         <div className={s.container}>
             <div className={s.video_container}>
@@ -78,7 +78,7 @@ const HomeHero = (props) => {
                 <div className={s.bottom_block}>
                     <ul className={s.langs}>
                             { processwire.langs.map(lang => (
-                                <li><CLink to={_.find(props.pageContext.versions, {lang: lang.code}).page_url}>{lang.title}</CLink></li>
+                                <li key={lang.code}><CLink to={_.find(props.pageContext.versions, {lang: lang.code}).page_url}>{lang.title}</CLink></li>
                             ))}
                     </ul>
                     <ul className={s.social}>

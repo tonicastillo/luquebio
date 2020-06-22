@@ -23,8 +23,8 @@ const CLink = React.forwardRef((props, ref) => {
 	// 	transition = transitions.default;
 	// }
 	const colors = ['#882433', '#91785b']
-	const color= colors[Math.floor(Math.random() * colors.length)]
-	if(props.ispaintdrip==="true")
+	const color= colors[1] //Math.floor(Math.random() * colors.length)
+	if(props.ispaintdrip==="true"){
 		return (
 			<AniLink
 				paintDrip
@@ -37,6 +37,7 @@ const CLink = React.forwardRef((props, ref) => {
 				{props.children}
 			</AniLink>
 		)
+	}
 	return (
 		<AniLink
 			cover
