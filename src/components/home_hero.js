@@ -47,7 +47,7 @@ const HomeHero = (props) => {
       )
       const { homeData } = props
       console.log(homeData)
-      const videoUrlOriginal = homeData.video.url.replace('http:','')
+      const videoUrlOriginal = homeData.video.url.replace('http','')
           
         let videoUrl= `${(typeof window !== 'undefined' && window.location.protocol !== 'https:' ? 'https:' : 'https')}${videoUrlOriginal}`
     return (
