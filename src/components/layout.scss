@@ -67,4 +67,10 @@ a{
 	@media #{$media-tablet-portrait}{
 		padding: 8.8rem $margin-portrait 1rem;
 	}
+	&.content_layout_inicio{
+		padding-top: $margin-mobile;
+		@media #{$media-tablet-portrait}{
+			padding-top: $margin-portrait;
+		}
+	}
 }

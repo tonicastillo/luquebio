@@ -44,11 +44,7 @@ const Menu = (props) => {
           }
         `
       )
-    //onsole.log("Menu props:")
-    //onsole.log(props)
-    //onsole.log(processwire)
-    // const [visible, setVisible] = useState(false)
-
+    const { isHomeHeaderMode } = props
     const mainMenuStyleClosed = {
         transform: `translate3d(110vw,0,0)`,
     }
@@ -58,8 +54,7 @@ const Menu = (props) => {
     const [maimMenuStyle, setMainMenuStyle] = useSpring(() => (mainMenuStyleClosed))
     const closeMenu = () => { setMainMenuStyle(mainMenuStyleClosed)}
     return(
-        <div className={s.container}
-        >
+        <div className={`${s.container} ${isHomeHeaderMode ? s.inicio : ''}`}>
             <MenuClosedButton onClickPassedEvent={() => { setMainMenuStyle(mainMenuStyleOpened)}} />
             <animated.div
                 className={s.menu_container}

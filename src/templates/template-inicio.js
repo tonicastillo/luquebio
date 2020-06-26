@@ -152,7 +152,7 @@ export const query = graphql`
 // }
 const InicioTemplate = (props) => {
   return (
-    <div className='content_layout'>
+    <div className='content_layout content_layout_inicio'>
     	<SEO title="Home" />
 		<HomeHero
 	  		homeData={{
