@@ -8,6 +8,7 @@
     top: 0; right: 0; bottom: 0; left: 0;
     background-color: rgba(0,0,0, .75);
     backdrop-filter: blur(0.4rem);
+    z-index: $zPopupBackground;
 }
 .pop_window_container{
     position: fixed;
@@ -17,6 +18,7 @@
     right: $margin-mobile;
     bottom: 0;
     left: $margin-mobile;
+    z-index: $zPopupWindow;
     @media #{$media-tablet-portrait}{
         right: $margin-portrait;
         left: $margin-portrait;
@@ -34,10 +36,11 @@
     }
     @media #{$media-tablet-portrait}{
         top: $margin-portrait; right: 0; left: auto;
-        width: 100%;
-        max-width: 78.5rem;
+        width: 80%;
+        min-width: 70rem;
+        // max-width: 102rem;
         max-height: calc(100vh - #{$margin-portrait});
-        padding: 0 $margin-int-portrait $margin-int-portrait $margin-int-portrait;
+        padding: 0 5.5rem $margin-int-portrait 5.5rem;
     }
     .pop_header{
         display: flex;

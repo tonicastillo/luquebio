@@ -8,14 +8,34 @@ import s from "./template-popup.module.scss"
 import CloseButton from '../components/animated_svg/close_botton'
 import CLink from '../components/cLink'
 import Header from "../components/header"
+import CabeceraGeneral from "../components/cabecera_general"
 
 const isBrowser = typeof window !== 'undefined'
 
 export const query = graphql`
 	query($path: String!, $pathParent: String!){
 		pwPages(page_url: {eq: $pathParent}) {
-			title
 			pwid
+			title
+			cabecera{
+				text
+				images {
+					description
+					url
+					image {
+						childImageSharp {
+							fluid(maxWidth: 2240, quality: 50) {
+								...GatsbyImageSharpFluid_withWebp_noBase64
+								aspectRatio
+							}
+						}
+					}
+					focus{
+						top
+						left
+					}
+				}
+			}
 			page_url
 			page_template
 			lang
@@ -27,9 +47,9 @@ export const query = graphql`
 					htmltext
 					htmltext_col1
 					htmltext_col2
-					is_big
 					link_title
 					link_url
+					is_big
 					links {
 						link_title
 						link_url
@@ -40,6 +60,7 @@ export const query = graphql`
 					images {
 						description
 						url
+						width
 						image {
 							childImageSharp {
 								fluid(maxWidth: 2240, quality: 50) {
@@ -54,7 +75,7 @@ export const query = graphql`
 						url
 						image {
 							childImageSharp {
-								fluid(maxWidth: 2240, quality: 50) {
+								fluid(maxWidth: 1120, quality: 50) {
 									...GatsbyImageSharpFluid_withWebp_noBase64
 									aspectRatio
 								}
@@ -121,10 +142,10 @@ const GeneralTemplate = (props) => {
 
 			{
 				isBrowser ? 
-				<div>
-					{/* <Header dummy={true} /> */}
-					<Content content={props.data.pwPages.content} />
-				</div>
+					<div>
+						<CabeceraGeneral cabecera={props.data.pwPages.cabecera} title={props.pageContext.title} />
+						<Content content={props.data.pwPages.content} />
+					</div>
 				:
 				null
 			}

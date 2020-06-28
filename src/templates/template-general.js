@@ -89,11 +89,12 @@ const GeneralTemplate = (props) => {
     <>
 		<Header isHidenOnTop={false} pageContext={props.pageContext} />
 		<div className='content_layout'>
-      <SEO title="General" />
-	  <div>
-		  <CabeceraGeneral cabecera={props.data.pwPages.cabecera} title={props.pageContext.title} />
-		  <Content content={props.data.pwPages.content} /></div>
-    </div>
+			<SEO title="General" />
+			<div>
+				<CabeceraGeneral cabecera={props.data.pwPages.cabecera} title={props.pageContext.title} />
+				<Content content={props.data.pwPages.content} />
+			</div>
+		</div>
 	</>
   )
 }

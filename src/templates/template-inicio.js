@@ -154,7 +154,7 @@ export const query = graphql`
 const InicioTemplate = (props) => {
   return (
 	  <>
-			<Header isHidenOnTop={true} pageContext={props.pageContext} />
+		<Header isHidenOnTop={true} pageContext={props.pageContext} />
 
 		<div className='content_layout content_layout_inicio'>
 			<SEO title="Home" />
