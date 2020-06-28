@@ -4,6 +4,7 @@ import { Link } from "gatsby"
 import SEO from "../components/seo"
 
 import HomeHero from "../components/home_hero"
+import Header from "../components/header"
 
 import Content from "../components/c/content"
 
@@ -152,19 +153,23 @@ export const query = graphql`
 // }
 const InicioTemplate = (props) => {
   return (
-    <div className='content_layout content_layout_inicio'>
-    	<SEO title="Home" />
-		<HomeHero
-	  		homeData={{
-				image: props.data.pwPages.home_hero_background_image,
-				video: props.data.pwPages.home_hero_background_video,
-				text: props.data.pwPages.home_hero_text,
-			}}
-	  		pageContext={props.pageContext}
-		/>
+	  <>
+			<Header isHidenOnTop={true} pageContext={props.pageContext} />
 
-      <Content content={props.data.pwPages.content} />
-    </div>
+		<div className='content_layout content_layout_inicio'>
+			<SEO title="Home" />
+			<HomeHero
+				homeData={{
+					image: props.data.pwPages.home_hero_background_image,
+					video: props.data.pwPages.home_hero_background_video,
+					text: props.data.pwPages.home_hero_text,
+				}}
+				pageContext={props.pageContext}
+			/>
+
+		<Content content={props.data.pwPages.content} />
+		</div>
+	</>
   )
 }
 

@@ -1,5 +1,6 @@
 @import "../../styles/shared";
 .container{
+    max-width: 49.2rem;
     margin: .4rem 0;
     @extend %font1_light;
     line-height: 1.7em;

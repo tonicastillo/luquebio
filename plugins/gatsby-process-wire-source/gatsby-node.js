@@ -166,7 +166,32 @@ exports.sourceNodes = async ({ actions, store, cache, createNodeId, createConten
 						}
 					}
 				}
-				
+				if(content.data.galeriaimages){
+					for (const imageSource of content.data.galeriaimages) {
+						if(imageSource && imageSource.url && imageSource.url !== 'undefined'){
+							const imageUrl = imageSource.url
+							console.log(`content Transformando: ${imageUrl}`);
+	
+							const extension = imageUrl.substring(imageUrl.lastIndexOf('.')+1, imageUrl.length) || imageUrl;
+							
+							console.log("Extensión: " + extension)
+							if(extension === 'jpg' || extension === 'jpeg' || extension === 'png' || extension === 'gif'){
+								const image = await createRemoteFileNode({
+									url: imageUrl,
+									cache,
+									store,
+									createNode,
+									createNodeId: id => `image-${id}`,
+									
+								})
+								if (image) {
+									imageSource.image___NODE = image.id
+								}
+							console.log("GaleriaImagen creada ")
+							}
+						}
+					}
+				}
 				
 			}
 		}

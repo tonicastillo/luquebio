@@ -78,6 +78,18 @@ export const query = graphql`
 					has_border_top
 					htmltext
 					quantity
+					galeriaimages {
+						description
+						url
+						image {
+							childImageSharp {
+								fluid(maxWidth: 2240, quality: 50) {
+									...GatsbyImageSharpFluid_withWebp_noBase64
+									aspectRatio
+								}
+							}
+						}
+					}
 					images {
 						description
 						url
@@ -101,12 +113,16 @@ export const query = graphql`
 const GeneralTemplate = (props) => {
 	
 	return (
+		<>
+		<Header isHidenOnTop={false} pageContext={props.pageContext} />
+
 		<div className='content_layout'>
 			<SEO title="General" />
+
 			{
 				isBrowser ? 
 				<div>
-					<Header dummy={true} />
+					{/* <Header dummy={true} /> */}
 					<Content content={props.data.pwPages.content} />
 				</div>
 				:
@@ -114,23 +130,26 @@ const GeneralTemplate = (props) => {
 			}
 			
 			<div className={s.background} />
-			<div className={s.pop_window}>
-				<div className={s.pop_header}>
-					<div className={s.pop_header_title}>
-						{props.data.pwPages.title}
+			<div className={s.pop_window_container}>
+				<div className={s.pop_window}>
+					<div className={s.pop_header}>
+						<div className={s.pop_header_title}>
+							{props.data.pwPages.title}
+						</div>
+						<div className={s.pop_header_close}>
+							<CLink to={props.data.pwPages.page_url}>
+								<CloseButton onClickPassedEvent={null} />
+							</CLink>
+						</div>
 					</div>
-					<div className={s.pop_header_close}>
-						<CLink to={props.data.pwPages.page_url}>
-							<CloseButton onClickPassedEvent={null} />
-						</CLink>
+					<div className={s.pop_content}>
+						<h2>{props.data.popupPage.title}</h2>
+						<ContentPop content={props.data.popupPage.content_pop} />
 					</div>
-				</div>
-				<div className={s.pop_content}>
-					<h2>{props.data.popupPage.title}</h2>
-					<ContentPop content={props.data.popupPage.content_pop} />
 				</div>
 			</div>
 		</div>
+		</>
 	)
 }
 

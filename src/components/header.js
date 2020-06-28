@@ -42,8 +42,8 @@ const Header = (props) => {
       window.removeEventListener('scroll', miraElScroll)
     }
   }, [isScrolled])
-
-  return(<a.header style={animStyleHeader} className={`${s.header} ${dummy ? s.header_dummy :''} ${pageContext && pageTemplate === 'POPUP' ? s.header_hidden :''}`}
+  // ${pageContext && pageTemplate === 'POPUP' ? s.header_hidden :''}
+  return(<a.header style={animStyleHeader} className={`${s.header} ${dummy ? s.header_dummy :''}`}
     >
       <div className={s.header_content}>
         <a.h1 style={animStyleH1}>

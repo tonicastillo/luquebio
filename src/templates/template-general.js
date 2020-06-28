@@ -5,6 +5,7 @@ import SEO from "../components/seo"
 
 import Content from "../components/c/content"
 import CabeceraGeneral from "../components/cabecera_general"
+import Header from "../components/header"
 
 export const query = graphql`
 	query($path: String!){
@@ -85,12 +86,15 @@ export const query = graphql`
 
 const GeneralTemplate = (props) => {
   return (
-    <div className='content_layout'>
+    <>
+		<Header isHidenOnTop={false} pageContext={props.pageContext} />
+		<div className='content_layout'>
       <SEO title="General" />
 	  <div>
 		  <CabeceraGeneral cabecera={props.data.pwPages.cabecera} title={props.pageContext.title} />
 		  <Content content={props.data.pwPages.content} /></div>
     </div>
+	</>
   )
 }
 

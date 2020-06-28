@@ -3,6 +3,7 @@ import CDestacado from "./c_destacado"
 // import CAccesoDirecto from "./c_acceso_directo"
 // import CMargen from "./c_margen"
 // import CAccesosDirectosBotones from "./c_accesos_directos_botones"
+import CGaleria from './c_galeria'
 import CImagen from './c_imagen'
 // import CEnlacesNivelInferior from './c_enlaces_nivel_inferior'
 import CTextoGeneral from './c_texto_general'
@@ -18,6 +19,8 @@ const ContentPop = props => {
 				case 'imagen':
 					// return (<CDestacado key={index} data={contentData.data} />)
 					return (<CImagen key={index} data={contentData.data} />)
+				case 'galeria':
+					return (<CGaleria key={index} data={contentData.data} />)
 				case 'texto_general':
 					return (<CTextoGeneral key={index} data={contentData.data} />)
 				default:
