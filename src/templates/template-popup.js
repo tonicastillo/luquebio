@@ -110,6 +110,10 @@ export const query = graphql`
 								}
 							}
 						}
+						focus{
+							top
+							left
+						}
 					}
 					images {
 						description
