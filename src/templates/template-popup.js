@@ -42,6 +42,20 @@ export const query = graphql`
 			content {
 				type
 				data {
+					timeline {
+						year
+						url
+						description
+						htmltext
+						image {
+							childImageSharp {
+								fluid(maxWidth: 512, quality: 50) {
+									...GatsbyImageSharpFluid_withWebp
+									aspectRatio
+								}
+							}
+						}
+					}
 					has_border_bottom
 					has_border_top
 					htmltext

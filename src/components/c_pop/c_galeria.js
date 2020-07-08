@@ -5,27 +5,29 @@ import _ from 'lodash'
 import { useSprings, useSpring, animated as a } from 'react-spring'
 import { useDrag } from 'react-use-gesture'
 import CloseButton from '../animated_svg/close_botton'
-import Flecha1 from '../animated_svg/flecha1'
+// import Flecha1 from '../animated_svg/flecha1'
 
 const CGaleria = ( props ) => {
 	const { galeriaimages } = props.data
-	console.log(galeriaimages)
 	const activeImage = useRef(0)
 	const [isLightboxOn, setIsLightboxOn] = useState(false)
 	const lightBoxSpring = useSpring({
 		transform: isLightboxOn ? 'translate3d(0,0,0)' : 'translate3d(0,110%,0)'
 	})
-	const [springProps, setSpringProps] = useSprings(galeriaimages.length, i => ({ x: i * window.innerWidth, sc: 1, display: 'block' }))
+	const [springProps, setSpringProps] = useSprings(galeriaimages.length, i => ({ x: typeof window !== 'undefined' ? i * window.innerWidth : 0, sc: 1, display: 'block' }))
 	const bind = useDrag((dragProps) => {
 		//onsole.log(dragProps)
 		const { movement, canceled } = dragProps
 		const { down, delta: [xDelta], direction: [xDir], distance, cancel } = dragProps
-		if (!down && Math.abs(movement[0]) > window.innerWidth / 5) {
-		  if(!canceled) cancel((activeImage.current = _.clamp(activeImage.current + _.clamp((movement[0])*-1, -1, 1), 0, galeriaimages.length - 1)))
+		if(typeof window !== 'undefined'){
+			if (!down && Math.abs(movement[0]) > window.innerWidth / 5) {
+				if(!canceled) cancel((activeImage.current = _.clamp(activeImage.current + _.clamp((movement[0])*-1, -1, 1), 0, galeriaimages.length - 1)))
+			  }
 		}
+		
 		setSpringProps(i => {
 		  if (i < activeImage.current - 1 || i > activeImage.current + 1) return { display: 'none' }
-		  const x = (i - activeImage.current) * window.innerWidth + (down ? movement[0] : 0)
+		  const x = typeof window !== 'undefined' ? (i - activeImage.current) * window.innerWidth + (down ? movement[0] : 0) : null
 		  const sc = 1
 		  return { x, sc, display: 'block' }
 		})
