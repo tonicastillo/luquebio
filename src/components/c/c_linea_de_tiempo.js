@@ -12,6 +12,7 @@ const CLineaDeTiempo = (props) => {
     //onsole.log("CLineaDeTiempo")
     const { timeline } = props.data
     const ANCHO = 940;
+    const MARGEN = 10;
     const ALTO = 340;
     const BOXANCHO = 480;
     const updateSprings = i => ({
@@ -29,7 +30,7 @@ const CLineaDeTiempo = (props) => {
     const years = maxYear - minYear
 
     const moveBind = useMove((moveProps) => {
-		const xPosPorUno = (moveProps.xy[0]-svgSize.x)/svgSize.width
+		const xPosPorUno = _.clamp(((moveProps.xy[0]-svgSize.x-(svgSize.width/8))/(svgSize.width/1.4)), 0, 1)
 		// const { movement, canceled } = dragProps
 		// const { down, delta: [xDelta], direction: [xDir], distance, cancel } = dragProps
 		// if (!down && Math.abs(movement[0]) > window.innerWidth / 5) {
@@ -42,7 +43,7 @@ const CLineaDeTiempo = (props) => {
 		//   return { x, sc, display: 'block' }
         // })
         setMainSprings(i => {
-            console.log(`translate3d(-${xPosPorUno*svgSize.width*.1}rem,0,0)`)
+            // console.log(`translate3d(-${xPosPorUno*svgSize.width*.1}rem,0,0)`)
             return {
                 boxLeft: `${BOXANCHO*0.1*i}rem`,
                 boxTransform: `translate3d(-${xPosPorUno*(BOXANCHO*timeline.length-svgSize.width)*.1}rem,0,0)`,
@@ -79,7 +80,7 @@ const CLineaDeTiempo = (props) => {
                     <a.path key={i} d={svgDeplacement.interpolate(svgDeplacement => {
                         const year = timeline[i].year - minYear
                         const yearPorUno = year / years
-                        const posXAbajo = yearPorUno * ANCHO
+                        const posXAbajo = MARGEN + yearPorUno * (ANCHO - MARGEN * 2) 
                         return `
                         M${posXAbajo},${ALTO}
                         L${posXAbajo},${ALTO*0.9}
