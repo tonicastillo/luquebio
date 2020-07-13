@@ -1,6 +1,14 @@
 @import "../../styles/shared";
 .container{
     position: relative;
+    margin-left: -$margin-mobile;
+    margin-right: -$margin-mobile;
+    margin-left: -$margin-mobile;
+    margin-right: -$margin-mobile;
+    @media#{$media-tablet-portrait}{
+        margin-left: 0;
+        margin-right: 0;
+    }
     .boxes{
         position: absolute;
         overflow-x: hidden;
@@ -9,31 +17,53 @@
         .box{
             position: absolute;
             top: 0;
-            width: 48rem;
+            width: 85vw;
+            // border-top: 1px solid red;
+            // &:first-child{
+            //     border-top: 1px solid blue;
+            // }
+            @media#{$media-tablet-portrait}{
+                width: 48rem;
+            }
             .ano{
                 position: absolute;
-                left: 0.6rem;
+                left: 11.8rem;
                 @extend %font1_light;
                 font-size: 2rem;
                 color: $color-enlace;
+                @media#{$media-tablet-portrait}{
+                    left: 0.6rem;
+                }
             }
             .image{
                 position: absolute;
                 top: 0;
-                left: 5.4rem;
-                width: 13.6rem;
-                height: 13.6rem;
+                left: 1.4rem;
+                width: 9rem;
+                height: 9rem;
                 border-radius: 50%;
+                @media#{$media-tablet-portrait}{
+                    left: 5.4rem;
+                    width: 13.6rem;
+                    height: 13.6rem;
+                }
             }
             .text{
                 position: absolute;
-                top: 0;
-                left: 20.4rem;
-                width: 26rem;
-                line-height: 1.5em;
+                top: 2.4rem;
+                left: 11.8rem;
+                right: 2.4rem;
+                line-height: 1.8em;
                 @extend %font2_regular;
-                font-size: .9rem;
+                font-size: 1.2rem;
                 color: $color-enlace;
+                @media#{$media-tablet-portrait}{
+                    top: 0;
+                    right: auto;
+                    font-size: 1.1rem;
+                    left: 20.4rem;
+                    width: 26rem;
+                }
                 strong{
                     font-weight: 700;
                 }
@@ -43,10 +73,49 @@
     svg{
         width: 100%;
         height: auto;
+        text{
+            @extend %font1_light;
+            font-size: .9rem;
+            text-anchor: middle;
+        }
     }
-    .touch{
+    .scrollbox{
         position: absolute;
         top: 0; right: 0; bottom: 0; left: 0;
-        // background-color: rgba(red, 0.5);
+        overflow-x: auto;
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+        &::-webkit-scrollbar{
+            display: none;
+        }
+        >div{
+            height: 100%;
+            // opacity: 0.2;
+            // background:-webkit-repeating-radial-gradient(circle,#ebe9e9,#ebe9e9 10px,#d4d1d1 10px,#d4d1d1 20px); 
+            // background: repeating-radial-gradient(circle,#ebe9e9,#ebe9e9 10px,#d4d1d1 10px,#d4d1d1 20px);
+            // background-size:100px 140px;
+        }
+    }
+    .arrow_left,
+    .arrow_right{
+        display: none;
+        position: absolute;
+        top: 15rem;
+        cursor: pointer;
+        z-index: 1;
+        width: 2rem;
+        height: 2rem;
+        @media#{$media-tablet-portrait}{
+            display: block;
+        }
+        svg{
+            transform: scale(-1.0, 1.0);
+        }
+    }
+    .arrow_right{
+        right: 0;
+        svg{
+            transform: scale(1.0, 1.0);
+        }
     }
 }
