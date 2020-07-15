@@ -91,6 +91,7 @@ const CLineaDeTiempo = (props) => {
                     }}
                     className={s.box} key={i}>
                         <div className={s.ano}>{timeline[i].year}</div>
+                        { timeline[i].image ? 
                         <Img
                             fluid={timeline[i].image.childImageSharp.fluid}
                             alt={timeline[i].description}
@@ -100,6 +101,8 @@ const CLineaDeTiempo = (props) => {
                             className={s.image}
                             backgroundColor="white"
                         />
+                        :
+                        null}
                         <div className={s.text} dangerouslySetInnerHTML={{__html:timeline[i].htmltext}} />
                     </a.div>
                 ))}
