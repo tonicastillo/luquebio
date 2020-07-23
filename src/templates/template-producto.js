@@ -1,114 +1,105 @@
 import React from "react"
 import SEO from "../components/seo"
+import CLink from '../components/cLink'
+import _ from 'lodash'
+import Img from 'gatsby-image'
 
-import Content from "../components/c/content"
-import CabeceraGeneral from "../components/cabecera_general"
+// import Content from "../components/c/content"
 import Header from "../components/header"
+import s from './template-producto.module.scss'
 
 export const query = graphql`
 	query($path: String!){
 		pwPages(page_url: {eq: $path}) {
 			pwid
 			title
-			cabecera{
-				text
-				images {
-					description
-					url
-					image {
-						childImageSharp {
-							fluid(maxWidth: 2240, quality: 50) {
-								...GatsbyImageSharpFluid_withWebp
-								aspectRatio
-							}
+			page_url
+			lang
+			page_template
+			producto_titulo_sencillo
+			producto_texto_izquierda
+			producto_texto_derecha
+			producto_subtitulo
+			producto_imagen {
+				url
+				description
+				image {
+					childImageSharp {
+						fluid(maxWidth: 512, quality: 50) {
+							...GatsbyImageSharpFluid_withWebp
+							aspectRatio
 						}
-					}
-					focus{
-						top
-						left
 					}
 				}
 			}
-			page_url
-			page_template
-			lang
-			content {
-				type
-				data {
-					timeline {
-						year
-						url
-						description
-						htmltext
-						image {
-							childImageSharp {
-								fluid(maxWidth: 512, quality: 50) {
-									...GatsbyImageSharpFluid_withWebp
-									aspectRatio
-								}
-							}
-						}
-					}
-					has_border_bottom
-					has_border_top
-					htmltext
-					htmltext_col1
-					htmltext_col2
-					link_title
-					link_url
-					is_big
-					links {
-						link_title
-						link_url
-						link_text
-					}
-					quantity
-					text
-					images {
-						description
-						url
-						width
-						image {
-							childImageSharp {
-								fluid(maxWidth: 2240, quality: 50) {
-									...GatsbyImageSharpFluid_withWebp
-									aspectRatio
-								}
-							}
-						}
-					}
-					images_mobile {
-						description
-						url
-						image {
-							childImageSharp {
-								fluid(maxWidth: 1120, quality: 50) {
-									...GatsbyImageSharpFluid_withWebp_noBase64
-									aspectRatio
-								}
-							}
-						}
-					}
-				}
+			producto_envase
+			producto_categoria
+			producto_caracteristicas
+		}
+		categorias:allPwPages(filter: {page_template: {eq: "CATEGORIA"}, lang: {eq: "es"}}) {
+			nodes {
+			  title
+			  page_url
 			}
 		}
-
+		productos:pwPages(page_template: {eq: "PRODUCTOS"}, lang: {eq: "es"}) {
+			page_url
+			title
+		}
 	}
 `;
 
 const GeneralTemplate = (props) => {
-  return (
-    <>
-		<Header isHidenOnTop={false} pageContext={props.pageContext} />
-		<div className='content_layout'>
-			<SEO title="General" />
-			<div>
-				<CabeceraGeneral cabecera={props.data.pwPages.cabecera} title={props.pageContext.title} />
-				<Content content={props.data.pwPages.content} />
+	const producto = props.data.pwPages
+	const productosPage = props.data.productos
+	const categorias = props.data.categorias
+	const categoria = _.find(categorias.nodes, {page_url: producto.producto_categoria})
+	return (
+		<>
+			<Header isHidenOnTop={false} pageContext={props.pageContext} />
+			<div className='content_layout'>
+				<SEO title="General" />
+				<div>
+					<nav className={s.titulo}><CLink to={productosPage.page_url}>{productosPage.title}</CLink> | <CLink to={categoria.page_url}>{categoria.title}</CLink> </nav>
+					<h1 className={s.intro}>{producto.producto_titulo_sencillo}</h1>
+					<h2 className={s.subtitulo}>{producto.producto_subtitulo}</h2>
+					<div className={s.fila1}>
+						<div className={s.image_container}>
+							{
+								producto.producto_imagen.image ? 
+								<Img
+									fluid={producto.producto_imagen.image.childImageSharp.fluid}
+									alt={producto.producto_imagen.description}
+									loading="eager"
+									backgroundColor="#333"
+									objectFit="contain"
+									style={{
+										maxHeight: '100%',
+									}}
+									imgStyle={{ objectFit: "contain" }}
+								/>
+								:
+								null
+							}
+						</div>
+						<div className={s.textoFila1}>
+							<div className={s.envase}>{producto.producto_envase}</div>
+							<div className={s.caracteristicas} dangerouslySetInnerHTML={{__html:producto.producto_caracteristicas}} />
+							<div className={s.fila2}>
+								<div className={s.textoIzquierdaFila2}>
+									<div dangerouslySetInnerHTML={{__html:producto.producto_texto_izquierda}} />
+								</div>
+								<div className={s.textoDerechaFila2}>
+									<div dangerouslySetInnerHTML={{__html:producto.producto_texto_derecha}} />
+								</div>
+							</div>
+						</div>
+					</div>
+					
+				</div>
 			</div>
-		</div>
-	</>
-  )
+		</>
+	)
 }
 
 export default GeneralTemplate
