@@ -4,7 +4,6 @@ import SEO from "../components/seo"
 import Content from "../components/c/content"
 import CabeceraGeneral from "../components/cabecera_general"
 import Header from "../components/header"
-import Footer from "../components/footer"
 
 export const query = graphql`
 	query($path: String!){
@@ -98,8 +97,6 @@ export const query = graphql`
 `;
 
 const GeneralTemplate = (props) => {
-	console.log("GeneralTemplate")
-
   return (
     <>
 		<Header isHidenOnTop={false} pageContext={props.pageContext} />
@@ -110,7 +107,6 @@ const GeneralTemplate = (props) => {
 				<Content content={props.data.pwPages.content} />
 			</div>
 		</div>
-		{/* <Footer /> */}
 	</>
   )
 }
