@@ -6,6 +6,7 @@ import CLink from '../components/cLink'
 
 import Content from "../components/c/content"
 import Header from "../components/header"
+import Footer from "../components/footer"
 
 import Select from "../components/common/select"
 import _ from 'lodash'
@@ -209,6 +210,8 @@ const ProductosTemplate = (props) => {
 
 				</div>
 			</div>
+			<Footer pageContext={props.pageContext} />
+
 		</>
 	)
 }

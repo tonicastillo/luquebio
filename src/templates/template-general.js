@@ -98,7 +98,6 @@ export const query = graphql`
 `;
 
 const GeneralTemplate = (props) => {
-	console.log("GeneralTemplate")
 
   return (
     <>
@@ -110,7 +109,7 @@ const GeneralTemplate = (props) => {
 				<Content content={props.data.pwPages.content} />
 			</div>
 		</div>
-		{/* <Footer /> */}
+		<Footer pageContext={props.pageContext} />
 	</>
   )
 }

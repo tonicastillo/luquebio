@@ -38,6 +38,59 @@ exports.sourceNodes = async ({ actions, store, cache, createNodeId, createConten
 		}
 	});
 
+	//Crea tertificaciones para usarlos en los producto
+	data.certificaciones.forEach(certificacion => {
+		cl(certificacion.title)
+		cl(certificacion.content)
+		createNode({
+			...certificacion,
+			id: createNodeId(certificacion.pwid+certificacion.lang), // required by Gatsby
+			internal: {
+				type: 'PWCertificaciones', // required by Gatsby
+				contentDigest: createContentDigest('pwcertificaciones') // required by Gatsby, must be unique
+			}
+		});
+	});
+	for (const certificacionIndex in data.certificaciones) {
+		if(data.certificaciones[certificacionIndex].url){
+			const imageSource = data.certificaciones[certificacionIndex]
+			const imageUrl = imageSource.url
+			cl(`content Transformando: ${imageUrl}`);
+
+			const extension = imageUrl.substring(imageUrl.lastIndexOf('.')+1, imageUrl.length) || imageUrl;
+			
+			cl("Extensión: " + extension)
+			if(extension === 'jpg' || extension === 'jpeg' || extension === 'png' || extension === 'gif'){
+				const image = await createRemoteFileNode({
+					url: imageUrl,
+					cache,
+					store,
+					createNode,
+					createNodeId: id => `image-${id}`,
+				})
+				if (image) {
+					imageSource.image___NODE = image.id
+				}
+			cl("Imagen creada ")
+			}
+		}
+		// if(data.certificaciones[certificacionIndex].url){
+		// 	const image_url = data.certificaciones[certificacionIndex].url
+		// 	cl("SEO Transformando: " + image_url);
+
+		// 	const image = await createRemoteFileNode({
+		// 		url: image_url,
+		// 		cache,
+		// 		store,
+		// 		createNode,
+		// 		createNodeId: id => `image-${id}`,
+		// 	})
+		// 	if (image) {
+		// 		data.certificaciones[certificacionIndex].image___NODE = image.id
+		// 	}
+		// }
+
+	}
 	//Crea página como node raiz para poder filtrar
 	data.pages.forEach(page => {
 		cl(page.title)
@@ -73,25 +126,25 @@ exports.sourceNodes = async ({ actions, store, cache, createNodeId, createConten
 		//producto image
 		if(data.pages[pageIndex].producto_imagen){
 			const imageSource = data.pages[pageIndex].producto_imagen
-					const imageUrl = imageSource.url
-					cl(`content Transformando: ${imageUrl}`);
+			const imageUrl = imageSource.url
+			cl(`content Transformando: ${imageUrl}`);
 
-					const extension = imageUrl.substring(imageUrl.lastIndexOf('.')+1, imageUrl.length) || imageUrl;
-					
-					cl("Extensión: " + extension)
-					if(extension === 'jpg' || extension === 'jpeg' || extension === 'png' || extension === 'gif'){
-						const image = await createRemoteFileNode({
-							url: imageUrl,
-							cache,
-							store,
-							createNode,
-							createNodeId: id => `image-${id}`,
-						})
-						if (image) {
-							imageSource.image___NODE = image.id
-						}
-					cl("Imagen creada ")
-					}
+			const extension = imageUrl.substring(imageUrl.lastIndexOf('.')+1, imageUrl.length) || imageUrl;
+			
+			cl("Extensión: " + extension)
+			if(extension === 'jpg' || extension === 'jpeg' || extension === 'png' || extension === 'gif'){
+				const image = await createRemoteFileNode({
+					url: imageUrl,
+					cache,
+					store,
+					createNode,
+					createNodeId: id => `image-${id}`,
+				})
+				if (image) {
+					imageSource.image___NODE = image.id
+				}
+			cl("Imagen creada ")
+			}
 		}
 		if(data.pages[pageIndex].producto_imagen_thumb){
 			const imageSource = data.pages[pageIndex].producto_imagen_thumb

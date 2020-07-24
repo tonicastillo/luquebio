@@ -1,0 +1,79 @@
+@import '../styles/shared';
+
+.footer_container{
+    
+    .footer{
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 2rem;
+        border-top: .1rem solid black;
+        padding: #{$margin-mobile*0.5} 0;
+        @media #{$media-tablet-portrait}{
+            justify-content: space-between;
+            flex-wrap: nowrap;
+            padding: $margin-mobile 0;
+        }
+        a{
+            display: block;
+            color: $color-enlace;
+            text-decoration: none;
+            text-transform: uppercase;
+            @extend %font1_medium;
+        }
+        .block2_langs{
+            width: 100%;
+            @media #{$media-tablet-portrait}{
+                display: flex;
+                order: 2;
+                flex: 1;
+                justify-content: center;
+                align-items: flex-end;
+                width: auto;
+            }
+            li{
+                display: inline-block;
+                margin-right: 2rem;
+                a{
+                    font-size: 1.2rem;
+                }
+            }
+        }
+        .block2_social{
+            width: 50%;
+            margin-top: 3.4rem;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-start;
+            @media #{$media-tablet-portrait}{
+                order: 1;
+                width: auto;
+                margin-top: 0;
+            }
+            li{
+                margin-right: 2rem;
+                @media #{$media-tablet-portrait}{
+                    margin-right: 2.8rem;
+                }
+                span{
+                    display: none;
+                }
+            }
+        }
+        .block2_legal{
+            width: 50%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+            @media #{$media-tablet-portrait}{
+                order: 3;
+                width: auto;
+            }
+            a{
+                @extend %font2_regular;
+                font-size: 1.1rem;
+                text-transform: none;
+            }
+        }
+    }
+    
+}

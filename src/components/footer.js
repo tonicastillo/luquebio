@@ -43,19 +43,22 @@ const Footer = (props) => {
     `
   )
   return(
-      <div>
-        <ul className={s.block2_social}>
-            <li><CLink to="/"><span>Facebook</span><SvgSocialImageFacebook /></CLink></li>
-            <li><CLink to="/"><span>Instagram</span><SvgSocialImageIntagram /></CLink></li>
-            <li><CLink to="/"><span>Twitter</span><SvgSocialImageTwitter /></CLink></li>
-        </ul>
-        <ul className={s.block2_langs}>
-            { processwire.langs.map(lang => (
-                <li key={lang.code} ><CLink to={_.find(props.pageContext.versions, {lang: lang.code}).page_url}>{lang.title}</CLink></li>
-            ))}
-        </ul>
-        <div className={s.block2_legal}>
-            <CLink to="/" >Avisos legales</CLink>
+      <div className={`content_layout ${s.footer_container}`}>
+        <div className={s.footer}>
+          <ul className={s.block2_langs}>
+              { processwire.langs.map(lang => (
+                  <li key={lang.code} ><CLink to={_.find(props.pageContext.versions, {lang: lang.code}).page_url}>{lang.title}</CLink></li>
+              ))}
+          </ul>
+          <ul className={s.block2_social}>
+              <li><CLink to="/"><span>Facebook</span><SvgSocialImageFacebook /></CLink></li>
+              <li><CLink to="/"><span>Instagram</span><SvgSocialImageIntagram /></CLink></li>
+              <li><CLink to="/"><span>Twitter</span><SvgSocialImageTwitter /></CLink></li>
+          </ul>
+          
+          <div className={s.block2_legal}>
+              <CLink to="/" >Avisos legales</CLink>
+          </div>
         </div>
       </div>
   )

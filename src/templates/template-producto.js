@@ -6,6 +6,8 @@ import Img from 'gatsby-image'
 
 // import Content from "../components/c/content"
 import Header from "../components/header"
+import Footer from "../components/footer"
+
 import s from './template-producto.module.scss'
 
 export const query = graphql`
@@ -95,9 +97,10 @@ const GeneralTemplate = (props) => {
 							</div>
 						</div>
 					</div>
-					
+
 				</div>
 			</div>
+			<Footer pageContext={props.pageContext} />
 		</>
 	)
 }

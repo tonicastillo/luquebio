@@ -8,6 +8,7 @@ import s from "./template-popup.module.scss"
 import CloseButton from '../components/animated_svg/close_botton'
 import CLink from '../components/cLink'
 import Header from "../components/header"
+import Footer from "../components/footer"
 import CabeceraGeneral from "../components/cabecera_general"
 
 const isBrowser = typeof window !== 'undefined'
@@ -163,6 +164,8 @@ const GeneralTemplate = (props) => {
 					<div>
 						<CabeceraGeneral cabecera={props.data.pwPages.cabecera} title={props.pageContext.title} />
 						<Content content={props.data.pwPages.content} />
+						<Footer pageContext={props.pageContext} />
+
 					</div>
 				:
 				null

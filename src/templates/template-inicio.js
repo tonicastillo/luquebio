@@ -5,6 +5,7 @@ import SEO from "../components/seo"
 
 import HomeHero from "../components/home_hero"
 import Header from "../components/header"
+import Footer from "../components/footer"
 
 import Content from "../components/c/content"
 
@@ -181,8 +182,9 @@ const InicioTemplate = (props) => {
 				pageContext={props.pageContext}
 			/>
 
-		<Content content={props.data.pwPages.content} />
+			<Content content={props.data.pwPages.content} />
 		</div>
+		<Footer pageContext={props.pageContext} />
 	</>
   )
 }
