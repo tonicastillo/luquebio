@@ -13,5 +13,10 @@ export const translations = {
         es: 'Elije una categoría de producto',
         en: 'Choose a line of product',
         fr: 'Choisissez une catégorie de produit',
-    }
+    },
+    inicio:{
+        es: 'Inicio',
+        en: 'Home',
+        fr: 'Accueil',
+    },
 }

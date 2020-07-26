@@ -7,6 +7,9 @@ import LinkWithArrow from './cLinkWithArrow'
 
 import _ from 'lodash'
 
+import { translations } from "../langs/translations"
+
+
 import SvgSocialImageFacebook from '../images/social-facebook.svg'
 import SvgSocialImageIntagram from '../images/social-instagram.svg'
 import SvgSocialImageTwitter from '../images/social-twitter.svg'
@@ -65,8 +68,8 @@ const Menu = (props) => {
                 <animated.nav className={s.menu_content}>
                     <CloseButton onClickPassedEvent={closeMenu} />
                     <div className={s.block1}>
-                        <LinkWithArrow to="/" onClick={closeMenu} className={`${s.b_inicio} ${s.b_flecha_a_la_izquierda}`} pos="left" type="big">Inicio</LinkWithArrow>
-                        <LinkWithArrow to="/" onClick={closeMenu} className={`${s.b_productos} ${s.b_flecha_a_la_derecha}`} pos="right" type="big">Nuestros Productos</LinkWithArrow>
+                        <LinkWithArrow to={_.find(processwire.pages, {page_template: 'INICIO', lang: props.pageContext.lang}).page_url} onClick={closeMenu} className={`${s.b_inicio} ${s.b_flecha_a_la_izquierda}`} pos="left" type="big">{translations.inicio[props.pageContext.lang]}</LinkWithArrow>
+                        <LinkWithArrow to={_.find(processwire.pages, {page_template: 'PRODUCTOS', lang: props.pageContext.lang}).page_url} onClick={closeMenu} className={`${s.b_productos} ${s.b_flecha_a_la_derecha}`} pos="right" type="big">Nuestros Productos</LinkWithArrow>
                         <div className={s.boxes}>
                             { _.filter(processwire.submenus, {lang: props.pageContext.lang}).map(submenu => (
                                 <div className={s.box} key={submenu.pwid}>

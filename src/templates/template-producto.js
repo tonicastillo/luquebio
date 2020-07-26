@@ -62,7 +62,12 @@ const GeneralTemplate = (props) => {
 			<div className='content_layout'>
 				<SEO title="General" />
 				<div>
-					<nav className={s.titulo}><CLink to={productosPage.page_url}>{productosPage.title}</CLink> | <CLink to={categoria.page_url}>{categoria.title}</CLink> </nav>
+					<nav className={s.titulo}><CLink to={productosPage.page_url}>{productosPage.title}</CLink> | {
+					categoria ?
+					<CLink to={categoria.page_url}>{categoria.title}</CLink>
+					:
+					null
+					} </nav>
 					<h1 className={s.intro}>{producto.producto_titulo_sencillo}</h1>
 					<h2 className={s.subtitulo}>{producto.producto_subtitulo}</h2>
 					<div className={s.fila1}>
