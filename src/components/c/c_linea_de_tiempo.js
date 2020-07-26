@@ -56,7 +56,7 @@ const CLineaDeTiempo = (props) => {
     const [svgRef, svgSize] = useDimensions();
 
 
-    const ratioPixel = ANCHO / svgSize.width
+    const ratioPixel = svgSize.width ? ANCHO / svgSize.width : 1
 
     const maxYear = _.maxBy(timeline, 'year').year
     const minYear = _.minBy(timeline, 'year').year
@@ -112,18 +112,20 @@ const CLineaDeTiempo = (props) => {
                     <a.path key={i} d={svgDeplacement.interpolate(svgDeplacement => {
                         const year = timeline[i].year - minYear
                         const yearPorUno = year / years
-                        const posXAbajo = MARGEN + yearPorUno * (ANCHO - MARGEN * 2) 
-                        return `
+                        const posXAbajo = MARGEN + yearPorUno * (ANCHO - MARGEN * 2)
+                        const svgWidth = svgSize.width ? svgSize.width : 1
+                        const d = `
                         M${posXAbajo},${ALTO*0.94}
                         L${posXAbajo},${ALTO*0.82}
                         C${posXAbajo},${ALTO*(0.7+EMPUJEMOBILE*0.2)}
                         ${posXAbajo},${ALTO*(0.6+EMPUJEMOBILE*0.5)}
-                        ${0.5 * (posXAbajo + (BOXANCHO*i*ratioPixel - svgDeplacement*(BOXANCHO*timeline.length-svgSize.width) * ratioPixel))},${ALTO*(0.5+EMPUJEMOBILE*0.7)}
-                        C${0.5 * (posXAbajo + (BOXANCHO*i*ratioPixel - svgDeplacement*(BOXANCHO*timeline.length-svgSize.width) * ratioPixel))},${ALTO*(0.5+EMPUJEMOBILE*0.7)}
-                        ${BOXANCHO*i*ratioPixel - svgDeplacement*(BOXANCHO*timeline.length-svgSize.width) * ratioPixel},${ALTO*(0.4+EMPUJEMOBILE*0.9)}
-                        ${BOXANCHO*i*ratioPixel - svgDeplacement*(BOXANCHO*timeline.length-svgSize.width) * ratioPixel},${ALTO*(0.2+EMPUJEMOBILE)}
-                        L${BOXANCHO*i*ratioPixel - svgDeplacement*(BOXANCHO*timeline.length-svgSize.width) * ratioPixel},${ALTO*(0)}
-                        `})} stroke="#927758" />
+                        ${0.5 * (posXAbajo + (BOXANCHO*i*ratioPixel - svgDeplacement*(BOXANCHO*timeline.length-svgWidth) * ratioPixel))},${ALTO*(0.5+EMPUJEMOBILE*0.7)}
+                        C${0.5 * (posXAbajo + (BOXANCHO*i*ratioPixel - svgDeplacement*(BOXANCHO*timeline.length-svgWidth) * ratioPixel))},${ALTO*(0.5+EMPUJEMOBILE*0.7)}
+                        ${BOXANCHO*i*ratioPixel - svgDeplacement*(BOXANCHO*timeline.length-svgWidth) * ratioPixel},${ALTO*(0.4+EMPUJEMOBILE*0.9)}
+                        ${BOXANCHO*i*ratioPixel - svgDeplacement*(BOXANCHO*timeline.length-svgWidth) * ratioPixel},${ALTO*(0.2+EMPUJEMOBILE)}
+                        L${BOXANCHO*i*ratioPixel - svgDeplacement*(BOXANCHO*timeline.length-svgWidth) * ratioPixel},${ALTO*(0)}
+                        `
+                        return d})} stroke="#927758" />
                 )
                 )}
                 {yearsArray.map((year, i) => {
