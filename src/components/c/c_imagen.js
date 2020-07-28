@@ -5,19 +5,19 @@ import CLink from '../cLink'
 const CImagen = ( props ) => {
 	const { link_url, link_title } = props.data
 	
-	if(link_url){
-		return(
-			<CLink
-				to={link_url}
-				title={link_title}
-				className={s.container}
-			>
-				<CImagenContent
-					{...props}
-				/>
-			</CLink>
-		)
-	}
+	// if(link_url){
+	// 	return(
+	// 		<CLink
+	// 			to={link_url}
+	// 			title={link_title}
+	// 			className={s.container}
+	// 		>
+	// 			<CImagenContent
+	// 				{...props}
+	// 			/>
+	// 		</CLink>
+	// 	)
+	// }
 	return(
 		<div className={s.container}>
 			<CImagenContent

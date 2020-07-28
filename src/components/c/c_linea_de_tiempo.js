@@ -1,4 +1,4 @@
-import React, {useState, useLayoutEffect, useRef} from "react"
+import React, {useRef} from "react"
 import s from './c_linea_de_tiempo.module.scss'
 import { useSpring, useSprings, animated as a } from "react-spring";
 import Img from 'gatsby-image'
@@ -17,9 +17,6 @@ const scrollToRef = (ref, direction) => {
 
 // import LinkWithArrow from '../cLinkWithArrow'
 const CLineaDeTiempo = (props) => {
-    //onsole.log("CLineaDeTiempo")
-    const [scrollX, setScrollX] = useState(0)
-    const boxScrollRef = useRef()
 	const windowSize = useWindowSize()
     
     const scrollRef = useRef(null)
@@ -69,6 +66,7 @@ const CLineaDeTiempo = (props) => {
     for (let index = minYear; index <= maxYear; index+=0.1) {
         yearsArrayx10.push(index)
     }
+
     return (
         <div className={s.container} >
             <div className={s.arrow_left} onClick={() => executeScroll('left')}>
@@ -160,7 +158,6 @@ const CLineaDeTiempo = (props) => {
                 }
                 )}
             </svg>
-            {/* <a.div {...moveBind()} {...dragBind()} className={s.touch} /> */}
             <a.div ref={scrollRef} className={s.scrollbox} onScroll={(el) => miraElScroll(el)}>
                 <a.div style={{
                     width: `${totalboxesancho*0.1}rem`
