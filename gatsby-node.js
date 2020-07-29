@@ -28,7 +28,9 @@ exports.createPages = async ({ graphql, actions }) => {
 						page_url
 						title
 						page_template
-						childrenpages
+						childrenpages{
+							page_url
+						}
 						parentpage{
 							page_url
 						}

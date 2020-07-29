@@ -84,7 +84,9 @@ const Menu = (props) => {
                             
                         </div>
                         <div className={s.oneline}>
-                            { _.filter(processwire.pages, {page_template: 'GENERAL', parentpage: {page_template: 'INICIO'}, lang: props.pageContext.lang}).map(page => (
+                            { _.filter(processwire.pages, page => {
+                                    return (page.page_template === 'GENERAL' || page.page_template === 'CONTACTO' ) && page.parentpage.page_template === 'INICIO' && page.lang === props.pageContext.lang 
+                                }).map(page => (
                                 <LinkWithArrow  onClick={closeMenu} key={page.pwid} to={page.page_url} className={`${s.b_flecha_a_la_derecha}`} pos="right" type="big">{page.title}</LinkWithArrow>
                             ))}
                         </div>

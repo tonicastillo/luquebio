@@ -62,7 +62,7 @@ const CabeceraGeneral = (props) => {
     if(!cabecera.images){
         return null
     }
-    
+    if(cabecera.images.length===0) return null
     return (
         <div className={s.container}>
             <div className={s.images}>
