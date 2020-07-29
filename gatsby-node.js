@@ -49,7 +49,7 @@ exports.createPages = async ({ graphql, actions }) => {
 		// const templateFile = path.resolve(`src/templates/template-${page.page_template.toLowerCase()}.js`)
 		let templateName = `${page.page_template}`
 		templateName = templateName.toLowerCase() // === 'INICIO' ? 'inicio' : 'general'
-		if(templateName!=='inicio' && templateName!=='general' && templateName!=='productos' && templateName!=='producto' && templateName!=='categoria' && templateName!=='popup'){
+		if(templateName!=='inicio' && templateName!=='general' && templateName!=='productos' && templateName!=='producto' && templateName!=='categoria' && templateName!=='popup' && templateName!=='contacto'){
 			templateName='general'
 		}
 		if(templateName==='categoria'){
