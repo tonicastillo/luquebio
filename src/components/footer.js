@@ -57,7 +57,11 @@ const Footer = (props) => {
           </ul>
           
           <div className={s.block2_legal}>
-              <CLink to="/" >Avisos legales</CLink>
+            { _.filter(processwire.pages, page => {
+                    return (page.page_template === 'LEGAL' ) && page.parentpage.page_template === 'INICIO' && page.lang === props.pageContext.lang 
+                }).map(page => (
+                <CLink key={page.pwid} to={page.page_url}>{page.title}</CLink>
+            ))}
           </div>
         </div>
       </div>

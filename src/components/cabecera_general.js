@@ -24,10 +24,12 @@ const CabeceraGeneral = (props) => {
     });
 
     const updateTime = () => {
-        if(time + 1 >= cabecera.images.length){
-            setTime(0)
-        } else {
-            setTime(time + 1)
+        if(cabecera && cabecera.hasOwnProperty('images') && cabecera.images.length>0){
+            if(time + 1 >= cabecera.images.length){
+                setTime(0)
+            } else {
+                setTime(time + 1)
+            }
         }
     }
     
@@ -62,7 +64,8 @@ const CabeceraGeneral = (props) => {
     if(!cabecera.images){
         return null
     }
-    if(cabecera.images.length===0) return null
+    
+    if(!cabecera || !cabecera.hasOwnProperty('images') || cabecera.images.length===0) return null
     return (
         <div className={s.container}>
             <div className={s.images}>

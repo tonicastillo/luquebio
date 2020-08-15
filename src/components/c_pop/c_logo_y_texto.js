@@ -11,7 +11,7 @@ const CLogoYTexto = ( props ) => {
 			<div className={s.imagecol}>
 				<div className={s.circle}>
 					<div className={s.circle_content}>
-
+						{image ?
 						<Img
 							fluid={image.childImageSharp.fluid}
 							alt={description}
@@ -26,6 +26,9 @@ const CLogoYTexto = ( props ) => {
 								{}
 							}
 						/>
+						:
+						null
+						}
 					</div>
 				</div>
 			</div>

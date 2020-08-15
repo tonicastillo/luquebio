@@ -103,7 +103,11 @@ const Menu = (props) => {
                             <li><a href="https://twitter.com/ecologicoluque" target="_blank"><span>Twitter</span><SvgSocialImageTwitter /></a></li>
                         </ul>
                         <div className={s.block2_legal}>
-                            <CLink to="/" onClick={closeMenu} >Avisos legales</CLink>
+                            { _.filter(processwire.pages, page => {
+                                    return (page.page_template === 'LEGAL' ) && page.parentpage.page_template === 'INICIO' && page.lang === props.pageContext.lang 
+                                }).map(page => (
+                                <CLink  onClick={closeMenu} key={page.pwid} to={page.page_url}>{page.title}</CLink>
+                            ))}
                         </div>
                     </div>
                 </animated.nav>
