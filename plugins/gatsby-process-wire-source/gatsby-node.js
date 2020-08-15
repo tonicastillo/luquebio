@@ -23,7 +23,7 @@ exports.sourceNodes = async ({ actions, store, cache, createNodeId, createConten
 	const { createNode, createNodeField } = actions
 	// Fetch data
 	const { data } = await axios.get(API_URI)
-	cl(data);
+	//cl(data);
 	const mainNode = await createNode({
 		...data,
 		id: `processwire`,
@@ -38,9 +38,10 @@ exports.sourceNodes = async ({ actions, store, cache, createNodeId, createConten
 		}
 	});
 
-	//Crea tertificaciones para usarlos en los producto
+	//Crea certificaciones para usarlos en los producto
 	data.certificaciones.forEach(certificacion => {
 		cl(certificacion.title)
+
 		cl(certificacion.content)
 		createNode({
 			...certificacion,
@@ -52,10 +53,13 @@ exports.sourceNodes = async ({ actions, store, cache, createNodeId, createConten
 		});
 	});
 	for (const certificacionIndex in data.certificaciones) {
-		if(data.certificaciones[certificacionIndex].url){
-			const imageSource = data.certificaciones[certificacionIndex]
+		console.log("Certificacion número " + certificacionIndex)
+		data.certificaciones[certificacionIndex].title = `POPOPO-${data.certificaciones[certificacionIndex].title}`
+
+		if(data.certificaciones[certificacionIndex].image.url){
+			const imageSource = data.certificaciones[certificacionIndex].image
 			const imageUrl = imageSource.url
-			cl(`content Transformando: ${imageUrl}`);
+			cl(`Certificacion transformando: ${imageUrl}`);
 
 			const extension = imageUrl.substring(imageUrl.lastIndexOf('.')+1, imageUrl.length) || imageUrl;
 			
@@ -69,9 +73,12 @@ exports.sourceNodes = async ({ actions, store, cache, createNodeId, createConten
 					createNodeId: id => `image-${id}`,
 				})
 				if (image) {
+					cl("Sí hay imagen")
+					cl(image)
 					imageSource.image___NODE = image.id
+					cl(data.certificaciones[certificacionIndex])
 				}
-			cl("Imagen creada ")
+			cl("Imagen creada ", image)
 			}
 		}
 		// if(data.certificaciones[certificacionIndex].url){
@@ -94,7 +101,7 @@ exports.sourceNodes = async ({ actions, store, cache, createNodeId, createConten
 	//Crea página como node raiz para poder filtrar
 	data.pages.forEach(page => {
 		cl(page.title)
-		cl(page.content)
+		cl(page)
 		createNode({
 			...page,
 			id: createNodeId(page.pwid+page.lang), // required by Gatsby
@@ -103,6 +110,8 @@ exports.sourceNodes = async ({ actions, store, cache, createNodeId, createConten
 				contentDigest: createContentDigest('pwpages') // required by Gatsby, must be unique
 			}
 		});
+		cl(page)
+
 	});
 
 	for (const pageIndex in data.pages) { 
@@ -111,6 +120,7 @@ exports.sourceNodes = async ({ actions, store, cache, createNodeId, createConten
 		if(data.pages[pageIndex].seo && data.pages[pageIndex].seo.image_url){
 			const image_url = data.pages[pageIndex].seo.image_url
 			cl("SEO Transformando: " + image_url);
+			data.pages[pageIndex].title = `POPOPO-${data.pages[pageIndex].title}`
 
 			const image = await createRemoteFileNode({
 				url: image_url,
@@ -143,7 +153,7 @@ exports.sourceNodes = async ({ actions, store, cache, createNodeId, createConten
 				if (image) {
 					imageSource.image___NODE = image.id
 				}
-			cl("Imagen creada ")
+				cl("Imagen creada ")
 			}
 		}
 		if(data.pages[pageIndex].producto_imagen_thumb){
@@ -165,7 +175,7 @@ exports.sourceNodes = async ({ actions, store, cache, createNodeId, createConten
 						if (image) {
 							imageSource.image___NODE = image.id
 						}
-					cl("producto_imagen_thumb creada ")
+						cl("producto_imagen_thumb creada ")
 					}
 		}
 		//Content image
@@ -191,7 +201,7 @@ exports.sourceNodes = async ({ actions, store, cache, createNodeId, createConten
 								if (image) {
 									imageSource.image___NODE = image.id
 								}
-							cl("Imagen creada ")
+								cl("Imagen creada ")
 							}
 						}
 					}
@@ -216,7 +226,7 @@ exports.sourceNodes = async ({ actions, store, cache, createNodeId, createConten
 								if (image) {
 									imageSource.image___NODE = image.id
 								}
-							cl("Imagen creada ")
+								cl("Imagen creada ")
 							}
 						}
 					}
@@ -242,7 +252,7 @@ exports.sourceNodes = async ({ actions, store, cache, createNodeId, createConten
 									imageSource.image___NODE = image.id
 								}
 								
-							cl("Imagen creada ")
+								cl("Imagen creada ")
 							}
 						}
 					}

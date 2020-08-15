@@ -11,7 +11,7 @@ import Footer from "../components/footer"
 import s from './template-producto.module.scss'
 
 export const query = graphql`
-	query($path: String!){
+	query($path: String!, $lang: String!){
 		pwPages(page_url: {eq: $path}) {
 			pwid
 			title
@@ -38,13 +38,13 @@ export const query = graphql`
 			producto_categoria
 			producto_caracteristicas
 		}
-		categorias:allPwPages(filter: {page_template: {eq: "CATEGORIA"}, lang: {eq: "es"}}) {
+		categorias:allPwPages(filter: {page_template: {eq: "CATEGORIA"}, lang: {eq: $lang}}) {
 			nodes {
 			  title
 			  page_url
 			}
 		}
-		productos:pwPages(page_template: {eq: "PRODUCTOS"}, lang: {eq: "es"}) {
+		productos:pwPages(page_template: {eq: "PRODUCTOS"}, lang: {eq: $lang}) {
 			page_url
 			title
 		}

@@ -7,6 +7,7 @@ import CGaleria from './c_galeria'
 import CImagen from './c_imagen'
 // import CEnlacesNivelInferior from './c_enlaces_nivel_inferior'
 import CTextoGeneral from './c_texto_general'
+import CLogoYTexto from './c_logo_y_texto'
 const ContentPop = props => {
 	const { content } = props
 	//onsole.log('ContentPop')
@@ -23,6 +24,8 @@ const ContentPop = props => {
 					return (<CGaleria key={index} data={contentData.data} />)
 				case 'texto_general':
 					return (<CTextoGeneral key={index} data={contentData.data} />)
+				case 'logo_y_texto':
+					return (<CLogoYTexto key={index} data={contentData.data} />)
 				default:
 					return (
 						<div key={index} />

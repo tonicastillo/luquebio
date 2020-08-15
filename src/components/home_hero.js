@@ -82,9 +82,9 @@ const HomeHero = (props) => {
                             ))}
                     </ul>
                     <ul className={s.social}>
-                        <li><CLink to="/"><span>Facebook</span><SvgSocialImageFacebook /></CLink></li>
-                        <li><CLink to="/"><span>Instagram</span><SvgSocialImageIntagram /></CLink></li>
-                        <li><CLink to="/"><span>Twitter</span><SvgSocialImageTwitter /></CLink></li>
+                        <li><a href="https://www.facebook.com/luqueecologico/" target="_blank"><span>Facebook</span><SvgSocialImageFacebook /></a></li>
+                        <li><a href="https://www.instagram.com/luqueorganic/" target="_blank"><span>Instagram</span><SvgSocialImageIntagram /></a></li>
+                        <li><a href="https://twitter.com/ecologicoluque" target="_blank"><span>Twitter</span><SvgSocialImageTwitter /></a></li>
                     </ul>
                 </div>
             </div>

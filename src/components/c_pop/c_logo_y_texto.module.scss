@@ -1,0 +1,65 @@
+@import "../../styles/shared";
+.container{
+    margin: 1.8em 0;
+    border-bottom: 1px solid black;
+    @media#{$media-tablet-portrait}{
+        display: flex;
+    }
+    .imagecol{
+        width: 70%;
+        margin: 4rem auto 2rem;
+        @media#{$media-tablet-portrait}{
+            width: 33%;
+            margin: 0 0 1.8em 0;
+        }
+        .circle{
+            position: relative;
+            padding-top: 100%;
+            background-color: #ebebec;
+            border-radius: 50%;
+            .circle_content{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: absolute;
+                top: 20%;
+                right: 20%;
+                bottom: 20%;
+                left: 20%;
+                >div{
+                    width: 100%;
+                }
+            }
+        }
+    }
+    .textcol{
+        padding-bottom: 2.8rem;
+        @media#{$media-tablet-portrait}{
+            width: 67%;
+            padding-left: $margin-portrait;
+        }
+        >div{
+            @extend %font2_regular;
+            line-height: 1.8em;
+            font-size: 1.2rem;
+            @media#{$media-tablet-portrait}{
+                font-size: 1.3rem;
+            }
+            p{
+                margin-bottom: 1.8em;
+            }
+            strong{
+                font-weight: 700;
+            }
+            a{
+                text-decoration: none;
+                font-weight: 700;
+                color: $color-enlace;
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+        }
+        
+    }
+}
