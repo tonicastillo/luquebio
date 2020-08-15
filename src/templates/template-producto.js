@@ -2,7 +2,7 @@ import React from "react"
 import SEO from "../components/seo"
 import CLink from '../components/cLink'
 import _ from 'lodash'
-import Img from 'gatsby-image'
+import Img from 'gatsby-image/withIEPolyfill'
 
 // import Content from "../components/c/content"
 import Header from "../components/header"
@@ -37,6 +37,7 @@ export const query = graphql`
 			producto_envase
 			producto_categoria
 			producto_caracteristicas
+			producto_certificaciones
 		}
 		categorias:allPwPages(filter: {page_template: {eq: "CATEGORIA"}, lang: {eq: $lang}}) {
 			nodes {
@@ -48,6 +49,23 @@ export const query = graphql`
 			page_url
 			title
 		}
+		certificaciones:allPwCertificaciones(filter: {lang: {eq: $lang}}){
+			nodes {
+				pwid
+				title
+				image {
+					url
+					image {
+						childImageSharp {
+							fluid(maxWidth: 512) {
+								...GatsbyImageSharpFluid_withWebp
+								aspectRatio
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 `;
 
@@ -56,6 +74,13 @@ const GeneralTemplate = (props) => {
 	const productosPage = props.data.productos
 	const categorias = props.data.categorias
 	const categoria = _.find(categorias.nodes, {page_url: producto.producto_categoria})
+	const certificacones = _.filter(props.data.certificaciones.nodes, certificacion => {
+		return _.find(producto.producto_certificaciones, value => { return value == certificacion.pwid } );
+	})
+	certificacones.map(certificacion => {
+		console.log(`padding-top: ${0.01*Math.round(100*(1/certificacion.image.image.childImageSharp.fluid.aspectRatio))}rem`)
+	})
+	
 	return (
 		<>
 			<Header isHidenOnTop={false} pageContext={props.pageContext} />
@@ -100,7 +125,24 @@ const GeneralTemplate = (props) => {
 									<div dangerouslySetInnerHTML={{__html:producto.producto_texto_derecha}} />
 								</div>
 							</div>
+							<div className={s.certificaciones}>
+								{certificacones.map(certificacion => (
+									<div key={certificacion.pwid} style={{width: `${0.01*Math.round(100*(4.2*certificacion.image.image.childImageSharp.fluid.aspectRatio))}rem`}}><Img
+										fluid={certificacion.image.image.childImageSharp.fluid}
+										alt={certificacion.title}
+										loading="eager"
+										backgroundColor="#fff"
+										objectFit="contain"
+										style={{
+											maxHeight: '4.2rem',
+										}}
+										objectPosition="0% 50%"
+										imgStyle={{ objectFit: "contain" }}
+								/></div>
+								))}
+							</div>
 						</div>
+						
 					</div>
 
 				</div>
