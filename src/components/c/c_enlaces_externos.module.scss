@@ -1,0 +1,37 @@
+@import "../../styles/shared";
+.container{
+    .links{
+        >span{
+            display: block;
+            float: left;
+            margin-right: 1.8rem;
+            @extend %font1;
+            line-height: 1.8em;
+            font-weight: 400;
+            font-size: 1.8rem;
+        }
+        .links_social{
+            min-height: 3.3rem;
+            li{
+                display: inline-block;
+                margin-top: 0.4rem;
+                margin-right: 1.4rem;
+            }
+        }
+        .links_general{
+            margin-top: 0.4rem;
+            li{
+                display: inline-block;
+                margin-top: 0.4rem;
+                a{
+                    @extend %font2_regular;
+                    line-height: 1.8em;
+                    font-weight: 400;
+                    font-size: 1.3rem;
+                    color: $color-enlace;
+                }
+            }
+        }
+
+    }
+}

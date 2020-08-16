@@ -68,11 +68,11 @@ const CNoticiaDestacada = ( props ) => {
                         <span>+INFO</span>
                         <ul className={s.links_social}>
                             {links_social.map(link => (
-                                <li><a href={link.link_url} target="_blank">{getIcon(link.link_title)}</a></li>
+                                <li key={link.link_url}><a href={link.link_url} target="_blank">{getIcon(link.link_title)}</a></li>
                             ))}
                         </ul>
                         <ul className={s.links_general}>{links_general.map(link => (
-                                <li><a href={link.link_url} target="_blank">{link.link_title}</a></li>
+                                <li key={link.link_url}><a href={link.link_url} target="_blank">{link.link_title}</a></li>
                             ))}</ul>
                     </div>
                     :

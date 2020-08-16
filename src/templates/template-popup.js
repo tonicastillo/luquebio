@@ -114,6 +114,10 @@ export const query = graphql`
 					has_border_top
 					htmltext
 					quantity
+					links {
+						link_title
+						link_url
+					}
 					galeriaimages {
 						description
 						url

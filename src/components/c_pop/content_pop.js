@@ -8,6 +8,8 @@ import CImagen from './c_imagen'
 // import CEnlacesNivelInferior from './c_enlaces_nivel_inferior'
 import CTextoGeneral from './c_texto_general'
 import CLogoYTexto from './c_logo_y_texto'
+import CEnlacesExternos from '../c/c_enlaces_externos'
+
 const ContentPop = props => {
 	const { content } = props
 	//onsole.log('ContentPop')
@@ -26,6 +28,8 @@ const ContentPop = props => {
 					return (<CTextoGeneral key={index} data={contentData.data} />)
 				case 'logo_y_texto':
 					return (<CLogoYTexto key={index} data={contentData.data} />)
+				case 'enlaces_externos':
+					return (<CEnlacesExternos key={index} data={contentData.data} />)
 				default:
 					return (
 						<div key={index} />
