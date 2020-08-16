@@ -1,6 +1,6 @@
 import CLink from './cLink'
 import React, { useState, useRef } from "react"
-import {useTransition, useSpring, useChain, config, useTrail, animated} from 'react-spring'
+import {useTransition, useSpring, useChain, config, useTrail, animated as a} from 'react-spring'
 import { useStaticQuery, graphql } from "gatsby"
 import { useMeasure } from "react-use"
 import _ from 'lodash'
@@ -126,22 +126,34 @@ const LinkBox = (props) => {
             { transform: 'translate3d(-5rem,0,0)',
             opacity: 0}
     })
+    const listSpring = useSpring({
+        // config: config.stiff,
+        from: { transform: 'translate(0px, 30px)' },
+        to: isOpen ?
+            {
+                transform: 'translate(0px, 0px)'
+            }
+            :
+            {
+                transform: 'translate(0px, 30px)'
+            }
+    })
     useChain(isOpen ? [boxSpringRef, linksSpringRef] : [linksSpringRef, boxSpringRef], [0, isOpen ? 0.1 : 0])
 
     return (
-        <animated.div style={{ height: boxSpring.height }} onClick={() => setIsOpen(isOpen => !isOpen)}>
+        <a.div style={{ height: boxSpring.height }} onClick={() => setIsOpen(isOpen => !isOpen)}>
             <div ref={boxRef}>
                 <span>{title}</span>
-                <ul>
+                <a.ul style={listSpring}>
                     {linkTrail.map((trail, i) => (
-                        <animated.li
+                        <a.li
                             key={i}
-                            style={trail} ><LinkWithArrow to={links[i].page_url} pos="right" >{links[i].title}</LinkWithArrow></animated.li>
+                            style={trail} ><LinkWithArrow to={links[i].page_url} pos="right" >{links[i].title}</LinkWithArrow></a.li>
                     ))}
-                </ul>
+                </a.ul>
             </div>
-            <animated.div style={{ transform: boxSpring.transform }} className={s.navBoxPlusClose} />
-        </animated.div>
+            <a.div style={{ transform: boxSpring.transform }} className={s.navBoxPlusClose} />
+        </a.div>
     )
 }
 

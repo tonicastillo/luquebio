@@ -1,0 +1,81 @@
+@import "../../styles/shared";
+.container{
+    margin-top: 1.8em;
+    padding-bottom: 1.8em;
+    @media#{$media-tablet-portrait}{
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        font-size: 1.3rem;
+    }
+    .image{
+        @media#{$media-tablet-portrait}{
+            width: 33.33%;
+        }
+    }
+    .text{
+        @media#{$media-tablet-portrait}{
+            width: 66.66%;
+            padding-right: $margin-int-portrait;
+        }
+        h4{
+            @extend %font1;
+            line-height: 1.8em;
+            font-weight: 400;
+            font-size: 1.8rem;
+            margin-bottom: 2.4rem;
+            text-transform: uppercase;
+        }
+        .htmltext{
+            @extend %font2_regular;
+            line-height: 1.8em;
+            font-weight: 400;
+            font-size: 1.3rem;
+            margin-bottom: 2.4rem;
+            @media#{$media-tablet-landscape}{
+                column-count: 2;
+                column-gap: 2rem;
+            }
+            a{
+                font-weight: 700;
+                color: $color-enlace;
+            }
+        }
+        .links{
+            >span{
+                display: block;
+                float: left;
+                margin-right: 1.8rem;
+                @extend %font1;
+                line-height: 1.8em;
+                font-weight: 400;
+                font-size: 1.8rem;
+            }
+            .links_social{
+                min-height: 3.3rem;
+                li{
+                    display: inline-block;
+                    margin-top: 0.4rem;
+                    margin-right: 1.4rem;
+                }
+            }
+            .links_general{
+                margin-top: 0.4rem;
+                li{
+                    display: inline-block;
+                    margin-top: 0.4rem;
+                    a{
+                        @extend %font2_regular;
+                        line-height: 1.8em;
+                        font-weight: 400;
+                        font-size: 1.3rem;
+                        color: $color-enlace;
+                    }
+                }
+            }
+
+        }
+    }
+}

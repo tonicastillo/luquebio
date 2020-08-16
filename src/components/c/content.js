@@ -7,6 +7,7 @@ import CImagen from './c_imagen'
 import CEnlacesNivelInferior from './c_enlaces_nivel_inferior'
 import CTextoGeneral from './c_texto_general'
 import CLineaDeTiempo from './c_linea_de_tiempo'
+import CNoticiaDestacada from './c_noticia_destacada'
 
 const Content = props => {
 	const { content } = props
@@ -39,6 +40,8 @@ const Content = props => {
 				return (<CEnlacesNivelInferior key={index} data={contentData.data} />)	
 			case 'texto_general':
 				return (<CTextoGeneral key={index} data={contentData.data} />)
+			case 'noticia_destacada':
+				return (<CNoticiaDestacada key={index} data={contentData.data} />)
 			case 'linea_de_tiempo':
 				return (<CLineaDeTiempo key={index} data={contentData.data} />)
 					

@@ -64,6 +64,7 @@
             display: flex;
             align-items: flex-end;
             justify-content: flex-end;
+            text-align: right;
             @media #{$media-tablet-portrait}{
                 order: 3;
                 width: auto;
@@ -72,6 +73,9 @@
                 @extend %font2_regular;
                 font-size: 1.1rem;
                 text-transform: none;
+                @media #{$media-tablet-portrait}{
+                    margin-left: 1.8rem;
+                }
             }
         }
     }
