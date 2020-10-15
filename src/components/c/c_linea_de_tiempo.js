@@ -1,4 +1,4 @@
-import React, {useRef} from "react"
+import React, {useRef, useLayoutEffect, useState} from "react"
 import s from './c_linea_de_tiempo.module.scss'
 import { useSpring, useSprings, animated as a } from "react-spring";
 import Img from 'gatsby-image'
@@ -28,7 +28,10 @@ const CLineaDeTiempo = (props) => {
     const ANCHO = 940;
     const WindowWidth = typeof window === 'object' ? window.innerWidth : ANCHO - 20
     const MARGEN = 10;
-    const ALTO = typeof window === 'object' && windowSize === 'mobile' ?  360000/WindowWidth : 480;
+    const [ALTO, SetALTO] = useState(typeof window === 'object' && windowSize === 'mobile' ?  ANCHO : 480)
+    useLayoutEffect(() => {
+        SetALTO(typeof window === 'object' && windowSize === 'mobile' ?  ANCHO : 480)
+      }, [ ALTO ]);
     const BOXANCHO = windowSize === 'mobile' ? (typeof window === 'object' ? window.innerWidth*0.8 : 480) : 480;
     const EMPUJEMOBILE = windowSize === 'mobile' ? 0.2 : 0
     const totalboxesancho = (BOXANCHO*timeline.length)
@@ -105,7 +108,7 @@ const CLineaDeTiempo = (props) => {
                     </a.div>
                 ))}
             </div>
-            <svg ref={svgRef} width={ANCHO} height={ALTO} viewBox={`0 0 ${ANCHO} ${ALTO}`} fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg ref={svgRef} width={ANCHO} height={ALTO*1} viewBox={`0 0 ${ANCHO} ${ALTO*1}`} fill="none" xmlns="http://www.w3.org/2000/svg" onClick={() => SetALTO(typeof window === 'object' && windowSize === 'mobile' ?  360000/WindowWidth : 480)}>
                 {mainSprings.map(({ svgDeplacement }, i) => (
                     <a.path key={i} d={svgDeplacement.interpolate(svgDeplacement => {
                         const year = timeline[i].year - minYear
