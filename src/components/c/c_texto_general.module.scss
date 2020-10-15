@@ -3,13 +3,13 @@
     margin-top: 1.8em;
     @extend %font2_regular;
     line-height: 1.8em;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     @media#{$media-tablet-portrait}{
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
 
-        font-size: 1.3rem;
+        font-size: 1.4rem;
     }
     >div{
         p{

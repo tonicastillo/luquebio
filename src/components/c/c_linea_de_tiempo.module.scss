@@ -55,12 +55,12 @@
                 right: 2.4rem;
                 line-height: 1.8em;
                 @extend %font2_regular;
-                font-size: 1.2rem;
+                font-size: 1.3rem;
                 color: $color-enlace;
                 @media#{$media-tablet-portrait}{
                     top: 0;
                     right: auto;
-                    font-size: 1.1rem;
+                    font-size: 1.3rem;
                     left: 20.4rem;
                     width: 26rem;
                 }
