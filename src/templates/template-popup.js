@@ -178,19 +178,22 @@ const GeneralTemplate = (props) => {
 			<div className={s.background} />
 			<div className={s.pop_window_container}>
 				<div className={s.pop_window}>
-					<div className={s.pop_header}>
-						<div className={s.pop_header_title}>
-							{props.data.pwPages.title}
-						</div>
+					<div className={s.pop_window_scroll}>
 						<div className={s.pop_header_close}>
 							<CLink to={props.data.pwPages.page_url}>
 								<CloseButton onClickPassedEvent={null} />
 							</CLink>
 						</div>
-					</div>
-					<div className={s.pop_content}>
-						<h2>{props.data.popupPage.title}</h2>
-						<ContentPop content={props.data.popupPage.content_pop} />
+						<div className={s.pop_header}>
+							<div className={s.pop_header_title}>
+								{props.data.pwPages.title}
+							</div>
+							
+						</div>
+						<div className={s.pop_content}>
+							<h2>{props.data.popupPage.title}</h2>
+							<ContentPop content={props.data.popupPage.content_pop} />
+						</div>
 					</div>
 				</div>
 			</div>

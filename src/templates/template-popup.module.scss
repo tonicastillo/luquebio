@@ -27,9 +27,7 @@
 .pop_window{
     position: absolute;
     top: $margin-mobile; right: 0; left: 0;
-    max-height: calc(100vh - #{$margin-mobile});
-    padding: 0 $margin-int-mobile $margin-int-mobile $margin-int-mobile;
-    overflow-y: auto;
+    
     background-color: white;
     @media only screen and (min-width: 1024px){
 
@@ -39,56 +37,67 @@
         width: 80%;
         min-width: 70rem;
         // max-width: 102rem;
-        max-height: calc(100vh - #{$margin-portrait});
-        padding: 0 5.5rem $margin-int-portrait 5.5rem;
     }
-    .pop_header{
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        min-height: 5.6rem;
-        @media #{$media-tablet-portrait}{
-            min-height: 8rem;
-
-        }
-        .pop_header_title{
-            flex: 1;
-            padding: 1.9rem 1.9rem 1.9rem 0;
-            @extend %font1;
-            font-weight: 400;
-            line-height: 1.8em;
-            font-size: 1rem;
-            color: #808080;
-            text-transform: uppercase;
+    .pop_header_close{
+        position: absolute;
+        right: 2rem;
+        >a{
+            display: block;
+            transform: scale(0.7);
+            margin-right: -#{$margin-int-mobile};
             @media #{$media-tablet-portrait}{
-                padding: 3.0rem 3.0rem 3.0rem 0;
-                font-size: 1.2rem;
+                margin-right: -#{$margin-int-portrait};
             }
         }
-        
-        .pop_header_close{
-            >a{
-                display: block;
-                transform: scale(0.7);
-                margin-right: -#{$margin-int-mobile};
+    }
+    .pop_window_scroll{
+        overflow-y: auto;
+        max-height: calc(100vh - #{$margin-mobile});
+        padding: 0 $margin-int-mobile $margin-int-mobile $margin-int-mobile;
+        @media #{$media-tablet-portrait}{
+            // max-width: 102rem;
+            max-height: calc(100vh - #{$margin-portrait});
+            padding: 0 5.5rem $margin-int-portrait 5.5rem;
+        }
+        .pop_header{
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            min-height: 5.6rem;
+            @media #{$media-tablet-portrait}{
+                min-height: 8rem;
+
+            }
+            .pop_header_title{
+                flex: 1;
+                padding: 1.9rem 1.9rem 1.9rem 0;
+                @extend %font1;
+                font-weight: 400;
+                line-height: 1.8em;
+                font-size: 1rem;
+                color: #808080;
+                text-transform: uppercase;
                 @media #{$media-tablet-portrait}{
-                    margin-right: -#{$margin-int-portrait};
+                    padding: 3.0rem 3.0rem 3.0rem 0;
+                    font-size: 1.2rem;
                 }
             }
+            
+            
         }
-    }
-    .pop_content{
-        
-        >h2{
-            padding-bottom: 0.8em;
-            @extend %font2_bold;
-            line-height: 1.8em;
-            font-size: 1.9rem;
-            color: black;
-            @media #{$media-tablet-portrait}{
-                padding-bottom: 0.7em;
-                line-height: 1.7em;
-                font-size: 2.5rem;
+        .pop_content{
+            
+            >h2{
+                padding-bottom: 0.8em;
+                @extend %font2_bold;
+                line-height: 1.8em;
+                font-size: 1.9rem;
+                color: black;
+                @media #{$media-tablet-portrait}{
+                    padding-bottom: 0.7em;
+                    line-height: 1.7em;
+                    font-size: 2.5rem;
+                }
             }
         }
     }
