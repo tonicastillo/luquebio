@@ -127,14 +127,14 @@ const GeneralTemplate = (props) => {
 							</div>
 							<div className={s.certificaciones}>
 								{certificacones.map(certificacion => (
-									<div key={certificacion.pwid} style={{width: `${0.01*Math.round(100*(4.2*certificacion.image.image.childImageSharp.fluid.aspectRatio))}rem`}}><Img
+									<div key={certificacion.pwid} style={{width: `${0.01*Math.round(100*(5.2*certificacion.image.image.childImageSharp.fluid.aspectRatio))}rem`}}><Img
 										fluid={certificacion.image.image.childImageSharp.fluid}
 										alt={certificacion.title}
 										loading="eager"
 										backgroundColor="#fff"
 										objectFit="contain"
 										style={{
-											maxHeight: '4.2rem',
+											maxHeight: '5.2rem',
 										}}
 										objectPosition="0% 50%"
 										imgStyle={{ objectFit: "contain" }}

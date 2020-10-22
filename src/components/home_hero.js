@@ -106,12 +106,14 @@ const LinkBox = (props) => {
         to: isOpen ?
             {
                 height: `${height > 80 ? height+24 : 190}px`,
-                transform: 'rotate(225deg)'
+                transform: 'rotate(225deg)',
+                backgroundColor: 'rgba(0,0,0,0.3)',
             }
             :
             {
                 height: '64px',
-                transform: 'rotate(0deg)'
+                transform: 'rotate(0deg)',
+                backgroundColor: 'rgba(0,0,0,0.0)',
             }
     })
     const linksSpringRef = useRef()
@@ -141,7 +143,7 @@ const LinkBox = (props) => {
     useChain(isOpen ? [boxSpringRef, linksSpringRef] : [linksSpringRef, boxSpringRef], [0, isOpen ? 0.1 : 0])
 
     return (
-        <a.div style={{ height: boxSpring.height }} onClick={() => setIsOpen(isOpen => !isOpen)}>
+        <a.div style={{ height: boxSpring.height, backgroundColor: boxSpring.backgroundColor }} onClick={() => setIsOpen(isOpen => !isOpen)}>
             <div ref={boxRef}>
                 <span>{title}</span>
                 <a.ul style={listSpring}>
