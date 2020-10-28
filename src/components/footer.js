@@ -7,6 +7,7 @@ import _ from 'lodash'
 import SvgSocialImageFacebook from '../images/social-facebook.svg'
 import SvgSocialImageIntagram from '../images/social-instagram.svg'
 import SvgSocialImageTwitter from '../images/social-twitter.svg'
+import SvgSocialImageLinkedin from '../images/social-linkedin.svg'
 
 import s from './footer.module.scss'
 
@@ -54,6 +55,7 @@ const Footer = (props) => {
             <li><a href="https://www.facebook.com/luqueecologico/" target="_blank"><span>Facebook</span><SvgSocialImageFacebook /></a></li>
             <li><a href="https://www.instagram.com/luqueorganic/" target="_blank"><span>Instagram</span><SvgSocialImageIntagram /></a></li>
             <li><a href="https://twitter.com/ecologicoluque" target="_blank"><span>Twitter</span><SvgSocialImageTwitter /></a></li>
+            <li><a href="https://www.linkedin.com/company/alcubilla-2000---luque-organic/" target="_blank"><span>LinkedIn</span><SvgSocialImageLinkedin /></a></li>
           </ul>
           
           <div className={s.block2_legal}>

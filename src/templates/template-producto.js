@@ -93,8 +93,8 @@ const GeneralTemplate = (props) => {
 					:
 					null
 					} </nav>
-					<h1 className={s.intro}>{producto.producto_titulo_sencillo}</h1>
-					<h2 className={s.subtitulo}>{producto.producto_subtitulo}</h2>
+					<h1 className={s.intro}>{producto.producto_subtitulo}</h1>
+					<h2 className={s.subtitulo}>{producto.producto_titulo_sencillo}</h2>
 					<div className={s.fila1}>
 						<div className={s.image_container}>
 							{

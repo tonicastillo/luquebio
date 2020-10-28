@@ -8,3 +8,49 @@
 	// 	padding: 0 $margin-portrait;
 	// }
 }
+.cookiesContainer{
+	position: fixed;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: flex-end;
+	top: 50%;
+	right: 2rem;
+	left: 2rem;
+	min-width: 24rem;
+	height: auto;
+	padding: 2rem;
+	background: white;
+	color: black;
+	z-index: 999;
+	transform: translate(0, -50%);
+	box-shadow: 0 0 50rem 100rem rgba(0,0,0,0.3);
+	@media #{$media-tablet-portrait}{
+		bottom: auto!important;
+		right: auto!important;
+		top: 50%;
+		left: 50%;
+		width: 50vw;
+		transform: translate(-50%, -50%);
+	}
+	>div{
+		line-height: 2rem;
+		font-size: 1.4rem;
+		margin-bottom: 2rem;
+		a{
+			text-decoration: underline;
+		}
+	}
+	>button,
+	>div>button{
+		display: inline-block;
+		height: 40px;
+		min-height: 16px;
+		margin-left: 2rem;
+		padding: 1rem 2rem;
+		line-height: 2rem;
+		font-size: 1.4rem;
+		border: 0;
+		cursor: pointer;
+	}
+}

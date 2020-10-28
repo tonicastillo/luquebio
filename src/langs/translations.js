@@ -72,9 +72,9 @@ export const translations = {
           </svg></a>`,
         },
         infoemail:{
-            es: 'Información general: luque@luque.bio<br>Pedidos: rafael@luque.bio',
-            en: 'General information: luque@luque.bio<br>Export department: rafael@luque.bio',
-            fr: 'Attention au client: luque@luque.bio<br>Export department: rafael@luque.bio',
+            es: 'Información general: luque@luque.bio<br>Exportación: rafael@luque.bio',
+            en: 'General information: luque@luque.bio<br>Orders: logistica@luque.bio, Export: rafael@luque.bio',
+            fr: 'Attention au client: luque@luque.bio<br>Commandes: logistica@luque.bio, Export: rafael@luque.bio',
         },
         nombre:{
             es: 'Nombre',
@@ -122,4 +122,15 @@ export const translations = {
             fr: 'Ver en <a href="https://goo.gl/maps/E8tmYHBaW8S2" target="_blank">google maps</a>',
         },
     }
+  ,
+  cookiesAlertAccept: {
+		es: 'Aceptar',
+    en: 'Accept cookies',
+    fr: 'Accepter',
+	},
+	cookiesAlertCancel: {
+		es: 'Rechazar',
+    en: 'Reject',
+    fr: 'Refuser',
+	},
 }

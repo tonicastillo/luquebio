@@ -9,6 +9,7 @@ import CTextoGeneral from './c_texto_general'
 import CLineaDeTiempo from './c_linea_de_tiempo'
 import CNoticiaDestacada from './c_noticia_destacada'
 import CEnlacesExternos from './c_enlaces_externos'
+import CImagenConTexto from './c_imagen_con_texto'
 
 const Content = props => {
 	const { content } = props
@@ -47,7 +48,10 @@ const Content = props => {
 				return (<CEnlacesExternos key={index} data={contentData.data} />)
 			case 'linea_de_tiempo':
 				return (<CLineaDeTiempo key={index} data={contentData.data} />)
-					
+			case 'imagen_con_texto':
+				console.log(contentData.data)
+				return (<CImagenConTexto key={index} data={contentData.data} />)
+						
 			// case 'text_highlighted':
 			// 	return (<ContentTextHighlighted key={index} data={contentData.data} />)
 		
