@@ -1,8 +1,9 @@
-
 import CLink from './cLink'
 import React, { useState, useLayoutEffect } from "react"
 import { useSpring, animated as a, interpolate } from 'react-spring'
+import { useStaticQuery, graphql } from "gatsby"
 
+import _ from 'lodash'
 
 import s from './header.module.scss'
 
@@ -11,6 +12,20 @@ import Menu from './menu'
 import Logo from '../images/luque-ecologico-logo-header-small.svg'
 
 const Header = (props) => {
+  const { allPwPages } = useStaticQuery(
+    graphql`
+     query{
+        allPwPages(filter: {page_template: {eq: "INICIO"}}) {
+          nodes {
+            page_url
+            title
+            lang
+          }
+        }
+      }
+    `
+  )
+
   const { pageContext, dummy } = props
   const pageTemplate = typeof pageContext === 'undefined' ? '' : pageContext.page_template
   // const { isHidenOnTop } = props //TODO
@@ -48,7 +63,8 @@ const Header = (props) => {
       <div className={s.header_content}>
         <a.h1 style={animStyleH1}>
           <CLink
-            to="/"
+            to={_.find(allPwPages.nodes, {lang: props.pageContext.lang}).page_url}
+            title={_.find(allPwPages.nodes, {lang: props.pageContext.lang}).title}
           >
             <Logo
             
