@@ -8,7 +8,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 // import { useStaticQuery, graphql } from "gatsby"
-import CookieConsent from "react-cookie-consent";
+// import CookieConsent from "react-cookie-consent";
 import { translations } from "../langs/translations"
 import CLink from './cLink'
 
@@ -34,7 +34,7 @@ const Layout = (props) => {
   return (
     <>
       {children}
-      <CookieConsent
+      {/* <CookieConsent
 				location="none"
 				buttonText={translations.cookiesAlertAccept[lang]}
 				enableDeclineButton
@@ -57,7 +57,7 @@ const Layout = (props) => {
   				<div>This website uses its own and third-party cookies for the correct operation and visualization of the website by the user, as well as the collection of statistics as set out in the cookies policy in the "purpose" column. By continuing to use this website, you agree to the use of cookies. You can change the settings or get more information <CLink to='/cookies-policy/'>here</CLink>.</div>
         )
 				}
-	  	</CookieConsent>
+	  	</CookieConsent> */}
     </>
   )
 }

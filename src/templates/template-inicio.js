@@ -172,7 +172,7 @@ const InicioTemplate = (props) => {
 		<Header isHidenOnTop={true} pageContext={props.pageContext} />
 
 		<div className='content_layout content_layout_inicio'>
-			<SEO title="Home" />
+			<SEO title={props.pageContext.title} lang={props.pageContext.lang} />
 			<HomeHero
 				homeData={{
 					image: props.data.pwPages.home_hero_background_image,
