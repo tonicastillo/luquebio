@@ -13,6 +13,7 @@ import { translations } from "../langs/translations"
 import CLink from './cLink'
 
 import './layout.scss'
+import '../styles/_klaro.scss'
 import s from './layout.module.scss'
 
 const Layout = (props) => {

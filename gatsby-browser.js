@@ -83,7 +83,7 @@ window.klaroConfig = {
   // Placing a link to our website helps us spread the word about it,
   // which ultimately enables us to make Klaro! better for everyone.
   // So please be fair and keep the link enabled. Thanks :)
-  //disablePoweredBy: true,
+  disablePoweredBy: true,
 
   // you can specify an additional class (or classes) that will be added to the Klaro `div`
   //additionalClass: 'my-klaro',
@@ -323,7 +323,7 @@ export const onClientEntry = async () => {
     await import(`intersection-observer`);
   }
   window.onload = () => {
-    addScript("https://cdn.kiprotect.com/klaro/v0.7.4/klaro.js")
+    addScript("https://cdn.kiprotect.com/klaro/v0.7.4/klaro-no-css.js")
     addScript("https://www.googletagmanager.com/gtag/js?id=G-5ZPXPLJTPH")
     // const script1 = document.createElement("script")
     // script1["data-type"] = "text/javascript"
