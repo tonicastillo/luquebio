@@ -5,15 +5,16 @@ import CLink from '../components/cLink'
 export const transformHTML = ( htmlString ) => {
 
     const transform = {
-        a: node => {
+        a: (node, props, children) => {
             const { href } = node;
 
             // Going outside?
             if (href.substr(0, 4) === "http") {
-            return node;
+                return <a href={href} {...props} target="_blank">{node.children}</a>;
             }
 
             // Internal link to some other Gatsby route
+            
             return (
             <CLink to={href}>
                 {node.children}
