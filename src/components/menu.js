@@ -70,7 +70,7 @@ const Menu = (props) => {
                     <CloseButton onClickPassedEvent={closeMenu} />
                     <div className={s.block1}>
                         <LinkWithArrow to={_.find(processwire.pages, {page_template: 'INICIO', lang: props.pageContext.lang}).page_url} onClick={closeMenu} className={`${s.b_inicio} ${s.b_flecha_a_la_izquierda}`} pos="left" type="big">{translations.inicio[props.pageContext.lang]}</LinkWithArrow>
-                        <LinkWithArrow to={_.find(processwire.pages, {page_template: 'PRODUCTOS', lang: props.pageContext.lang}).page_url} onClick={closeMenu} className={`${s.b_productos} ${s.b_flecha_a_la_derecha}`} pos="right" type="big">Nuestros Productos</LinkWithArrow>
+                        <LinkWithArrow to={_.find(processwire.pages, {page_template: 'PRODUCTOS', lang: props.pageContext.lang}).page_url} onClick={closeMenu} className={`${s.b_productos} ${s.b_flecha_a_la_derecha}`} pos="right" type="big">{_.find(processwire.pages, {page_template: 'PRODUCTOS', lang: props.pageContext.lang}).title}</LinkWithArrow>
                         <div className={s.boxes}>
                             { _.filter(processwire.submenus, {lang: props.pageContext.lang}).map(submenu => (
                                 <div className={s.box} key={submenu.pwid}>

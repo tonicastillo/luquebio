@@ -43,7 +43,7 @@ const CEnlacesExternos = ( props ) => {
                 <span>+INFO</span>
                 <ul className={s.links_social}>
                     {links_social.map(link => (
-                        <li key={link.link_url}><a href={link.link_url} target="_blank">{getIcon(link.link_title)}</a></li>
+                        <li key={link.link_url}><a href={link.link_url} target="_blank">{getIcon(link.link_title.toLowerCase().trim())}</a></li>
                     ))}
                 </ul>
                 <ul className={s.links_general}>{links_general.map(link => (

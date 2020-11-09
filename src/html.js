@@ -56,7 +56,49 @@ export default function HTML(props) {
             disablePoweredBy: true,
 
             translations: {
-                
+              en: {
+                consentModal: {
+                  title: 'Services we would like to use',
+                  description: 'Here you can evaluate and customize the services that we would like to use on this website. You are in charge! Please enable or disable the services at your convenience. Here you can select the service that we would like to use on this website. But you decide.',
+                },
+                consentNotice:  {
+                  description: "We use our own and third party (Google) cookies, analytical/performance/measurement cookies to improve the usability and content of our website and to analyze web traffic. You can change your mind later in the cookie policy.",
+                  learnMore: "Configure cookies",
+                },
+                decline: 'Deactivate all',
+                ok: 'Accept',
+                acceptAll: 'Accept all',
+                acceptSelected: 'Accept selected',
+              },
+              fr: {
+                consentModal: {
+                  title: 'Services que nous souhaitons utiliser',
+                  description: 'Ici, vous pouvez évaluer et personnaliser les services que nous souhaitons utiliser sur ce site Web. Tu es responsable! Veuillez activer ou désactiver les services à votre convenance.<br>Ici, vous pouvez sélectionner le service que nous souhaitons utiliser sur ce site Web. Mais vous décidez.',
+                },
+                consentNotice:  {
+                  description: "Nous utilisons nos propres cookies et des cookies tiers (Google), des cookies analytiques / de performance / de mesure pour améliorer l’utilisation et le contenu de notre site Web et pour analyser le trafic Web. Vous pouvez changer d'avis plus tard dans la politique de cookies.",
+                  learnMore: "Configurer les cookies",
+                },
+                decline: 'Désactiver tout',
+                ok: 'Accepter',
+                acceptAll: 'Accepter tout',
+                acceptSelected: 'Accepter les sélectionnés',
+              },
+              es: {
+                consentModal: {
+                  title: 'Servicios que nos gustaría utilizar',
+                  description: 'Here you can evaluate and customize the services that we would like to use on this website. You are in charge! Please enable or disable the services at your convenience. <br>Here you can select the service that we would like to use on this website. But you decide.',
+                },
+                consentNotice:  {
+                  description: "Aquí puede evaluar y personalizar los servicios que nos gustaría utilizar en este sitio web. ¡Usted está a cargo! Habilite o deshabilite los servicios como considere oportuno. Aquí puedes seleccionar el servicio que nos gustaría utilizar en este sitio web. Pero tú decides.",
+                  learnMore: "Configurar cookies",
+                },
+                decline: 'Desactivar todos',
+                ok: 'Aceptar',
+                acceptAll: 'Aceptar todo',
+                acceptSelected: 'Aceptar seleccionados',
+              },
+              
             },
 
             services: [
