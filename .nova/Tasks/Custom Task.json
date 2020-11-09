@@ -1,0 +1,18 @@
+{
+  "actions" : {
+    "build" : {
+      "enabled" : true,
+      "script" : "gatsby clean & gatsby build"
+    },
+    "clean" : {
+      "enabled" : true,
+      "script" : "gatsby clean"
+    },
+    "run" : {
+      "enabled" : true,
+      "script" : "gatsby clean & gatsby develop"
+    }
+  },
+  "identifier" : "C58220D3-DED4-4ED6-BD30-10DCEC7B74B9",
+  "openLogOnRun" : "start"
+}
