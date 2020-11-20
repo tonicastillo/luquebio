@@ -5,20 +5,21 @@ import Content from "../components/c/content"
 import ContentPop from "../components/c_pop/content_pop"
 
 import s from "./template-popup.module.scss"
-import CloseButton from '../components/animated_svg/close_botton'
-import CLink from '../components/cLink'
+import CloseButton from "../components/animated_svg/close_botton"
+import CLink from "../components/cLink"
 import Header from "../components/header"
 import Footer from "../components/footer"
 import CabeceraGeneral from "../components/cabecera_general"
+import { decodeHTMLEntities } from "../helpers/decodeHTMLEntities"
 
-const isBrowser = typeof window !== 'undefined'
+const isBrowser = typeof window !== "undefined"
 
 export const query = graphql`
-	query($path: String!, $pathParent: String!){
-		pwPages(page_url: {eq: $pathParent}) {
+	query($path: String!, $pathParent: String!) {
+		pwPages(page_url: { eq: $pathParent }) {
 			pwid
 			title
-			cabecera{
+			cabecera {
 				text
 				images {
 					description
@@ -31,7 +32,7 @@ export const query = graphql`
 							}
 						}
 					}
-					focus{
+					focus {
 						top
 						left
 					}
@@ -101,7 +102,7 @@ export const query = graphql`
 			}
 		}
 
-		popupPage: pwPages(page_url: {eq: $path}) {
+		popupPage: pwPages(page_url: { eq: $path }) {
 			title
 			pwid
 			page_url
@@ -129,7 +130,7 @@ export const query = graphql`
 								}
 							}
 						}
-						focus{
+						focus {
 							top
 							left
 						}
@@ -146,58 +147,59 @@ export const query = graphql`
 							}
 						}
 					}
-					
 				}
 			}
 		}
-
 	}
-`;
+`
 
-const GeneralTemplate = (props) => {
-	
+const GeneralTemplate = props => {
 	return (
 		<>
-		<Header isHidenOnTop={false} pageContext={props.pageContext} />
+			<Header isHidenOnTop={false} pageContext={props.pageContext} />
 
-		<div className='content_layout'>
-			<SEO title="General" />
+			<div className="content_layout">
+				<SEO title="General" />
 
-			{
-				isBrowser ? 
+				{isBrowser ? (
 					<div>
-						<CabeceraGeneral cabecera={props.data.pwPages.cabecera} title={props.pageContext.title} />
+						<CabeceraGeneral
+							cabecera={props.data.pwPages.cabecera}
+							title={props.pageContext.title}
+						/>
 						<Content content={props.data.pwPages.content} />
 						<Footer pageContext={props.pageContext} />
-
 					</div>
-				:
-				null
-			}
-			
-			<div className={s.background} />
-			<div className={s.pop_window_container}>
-				<div className={s.pop_window}>
-					<div className={s.pop_window_scroll}>
-						<div className={s.pop_header_close}>
-							<CLink to={props.data.pwPages.page_url}>
-								<CloseButton onClickPassedEvent={null} />
-							</CLink>
-						</div>
-						<div className={s.pop_header}>
-							<div className={s.pop_header_title}>
-								{props.data.pwPages.title}
+				) : null}
+
+				<div className={s.background} />
+				<div className={s.pop_window_container}>
+					<div className={s.pop_window}>
+						<div className={s.pop_window_scroll}>
+							<div className={s.pop_header_close}>
+								<CLink to={props.data.pwPages.page_url}>
+									<CloseButton onClickPassedEvent={null} />
+								</CLink>
 							</div>
-							
-						</div>
-						<div className={s.pop_content}>
-							<h2>{props.data.popupPage.title}</h2>
-							<ContentPop content={props.data.popupPage.content_pop} />
+							<div className={s.pop_header}>
+								<div className={s.pop_header_title}>
+									{props.data.pwPages.title}
+								</div>
+							</div>
+							<div className={s.pop_content}>
+								<h2>
+									{decodeHTMLEntities(
+										props.data.popupPage.title
+									)}
+								</h2>
+								<ContentPop
+									content={props.data.popupPage.content_pop}
+								/>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 		</>
 	)
 }

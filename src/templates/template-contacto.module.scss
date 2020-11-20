@@ -1,156 +1,163 @@
 @import "../styles/shared";
-.contacto_page{
-    .titulo{
-        @extend %font1;
-        font-size: 1.4rem;
-        text-transform: uppercase;
-    }
-    .intro{
-        margin-top: 2rem;
-        @extend %font1_light;
-        line-height: 1.7em;
-        font-size: 2rem;
-        text-transform: uppercase;
-        @media #{$media-tablet-portrait}{
-            max-width: 60%;
-            margin-top: 3rem;
-        }
-    }
-    .telyemail{
-        margin-top: 2rem;
-        line-height: 1.8em;
-        font-size: 1.3rem;
-        @media #{$media-tablet-portrait}{
-            display: flex;
-            margin-top: 3rem;
-        }
-        &>*{
-            @media #{$media-tablet-portrait}{
-                min-width: 18.4rem;
-            }
-        }
-        a{
-            text-decoration: none;
-            svg{
-                vertical-align: middle;
-                margin-left: 0.6rem;
-                width: 2.2rem;
-                height: 2.2rem;
-                @media #{$media-tablet-portrait}{
-                    width: 1.8rem;
-                    height: 1.8rem;
-                }
-            }
-        }
-    }
-    .contactinfo{
-        margin-top: 2rem;
-        line-height: 1.8em;
-        font-size: 1.3rem;
-        @media #{$media-tablet-portrait}{
-            display: flex;
-            margin-top: 3rem;
-        }
-        &>*{
-            @media #{$media-tablet-portrait}{
-                min-width: 18.4rem;
-            }
-        }
-        a{
-            color: $color-enlace;
-        }
-    }
-    .formulario{
-        margin-top: 2rem;
-        border-top: 1px solid black;
-        padding-top: 1rem;
-        @media #{$media-tablet-portrait}{
-            margin-top: 3rem;
-            padding-top: 1.4rem;
-        }
-        label{
-            display: block;
-            padding: .6rem 0;
-            @extend %font1;
-            font-size: 1.1rem;
-        }
-        input[type="text"],
-        input[type="email"],
-        input[type="phone"]{
-            
-            width: 100%;
-            padding: 1rem 1.2rem;
-            background-color: #f4f2ef;
-            @extend %font1;
-            line-height: 1.5em;
-            font-size: 1.1rem;
-            border: 0;
-            border-radius: 0;
-            box-sizing: border-box;
-        }
-        textarea{
-            width: 100%;
-            height: 12rem;
-            padding: 1rem 1.2rem;
-            background-color: #f4f2ef;
-            @extend %font1;
-            line-height: 1.5em;
-            font-size: 1.1rem;
-            border: 0;
-            border-radius: 0;
-            box-sizing: border-box;
-        }
-        .checkbox{
-            padding-top: 1.6rem;
-            @media #{$media-tablet-portrait}{
-                padding-top: 6.2rem;
-            }
-            label{
-                display: inline;
-                margin-left: 0.4rem;
-                vertical-align: middle;
-            }
-        }
-        button{
-            margin-top: 1.8rem;
-            background-color: $color-enlace;
-            color: white;
-            border: 0;
-            border-radius: 0;
-            padding: 1.4rem;
-            font-size: 1.4rem;
-            text-transform: uppercase;
-        }
-    }
-    .unafila{
-        margin-top: 2rem;
-        margin-bottom: 2rem;
-    }
-    .dosfilas{
-        margin-top: 2rem;
-        margin-bottom: 2rem;
-    }
-    @media #{$media-tablet-portrait}{
-        .formulario_cols{
+.contacto_page {
+	.titulo {
+		@extend %font1;
+		font-size: 1.4rem;
+		text-transform: uppercase;
+	}
+	.intro {
+		margin-top: 2rem;
+		@extend %font1_light;
+		line-height: 1.7em;
+		font-size: 2rem;
+		text-transform: uppercase;
+		@media #{$media-tablet-portrait} {
+			max-width: 60%;
+			margin-top: 3rem;
+		}
+	}
+	.telyemail {
+		margin-top: 2rem;
+		line-height: 1.8em;
+		font-size: 1.3rem;
+		@media #{$media-tablet-portrait} {
+			display: flex;
+			margin-top: 3rem;
+		}
+		& > * {
+			@media #{$media-tablet-portrait} {
+				min-width: 18.4rem;
+			}
+		}
+		a {
+			text-decoration: none;
+			svg {
+				vertical-align: middle;
+				margin-left: 0.6rem;
+				width: 2.2rem;
+				height: 2.2rem;
+				@media #{$media-tablet-portrait} {
+					width: 1.8rem;
+					height: 1.8rem;
+				}
+			}
+		}
+	}
+	.contactinfo {
+		margin-top: 2rem;
+		line-height: 1.8em;
+		font-size: 1.3rem;
+		@media #{$media-tablet-portrait} {
+			display: flex;
+			margin-top: 3rem;
+		}
+		& > * {
+			@media #{$media-tablet-portrait} {
+				min-width: 18.4rem;
+			}
+		}
+		a {
+			color: $color-enlace;
+		}
+	}
+	.formulario {
+		margin-top: 2rem;
+		border-top: 1px solid black;
+		padding-top: 1rem;
+		@media #{$media-tablet-portrait} {
+			margin-top: 3rem;
+			padding-top: 1.4rem;
+		}
+		label {
+			display: block;
+			padding: 0.6rem 0;
+			@extend %font1;
+			font-size: 1.1rem;
+		}
+		input[type="text"],
+		input[type="email"],
+		input[type="phone"] {
+			width: 100%;
+			padding: 1rem 1.2rem;
+			background-color: #f4f2ef;
+			@extend %font1;
+			line-height: 1.5em;
+			font-size: 1.1rem;
+			border: 0;
+			border-radius: 0;
+			box-sizing: border-box;
+		}
+		textarea {
+			width: 100%;
+			height: 12rem;
+			padding: 1rem 1.2rem;
+			background-color: #f4f2ef;
+			@extend %font1;
+			line-height: 1.5em;
+			font-size: 1.1rem;
+			border: 0;
+			border-radius: 0;
+			box-sizing: border-box;
+		}
+		.checkbox {
+			padding-top: 1.6rem;
+			@media #{$media-tablet-portrait} {
+				// padding-top: 6.2rem;
+			}
+			label {
+				display: inline;
+				margin-left: 0.4rem;
+				vertical-align: middle;
+			}
+			p {
+				padding: 1.6rem 0;
+				line-height: 1.6em;
+				@extend %font1;
+				font-size: 1.1rem;
+				strong {
+					font-weight: 700;
+				}
+			}
+		}
+		button {
+			margin-top: 1.8rem;
+			background-color: $color-enlace;
+			color: white;
+			border: 0;
+			border-radius: 0;
+			padding: 1.4rem;
+			font-size: 1.4rem;
+			text-transform: uppercase;
+		}
+	}
+	.unafila {
+		margin-top: 2rem;
+		margin-bottom: 2rem;
+	}
+	.dosfilas {
+		margin-top: 2rem;
+		margin-bottom: 2rem;
+	}
+	@media #{$media-tablet-portrait} {
+		.formulario_cols {
+			margin-right: -$margin-mobile;
 
-            margin-right: -$margin-mobile;
-            
-            &:after {
-                content: "";
-                display: table;
-                clear: both;
-            }
-            
-            .unafila{
-                float: left;
-                width: 33.333%;
-                padding-right: $margin-mobile;
-            }
-            .dosfilas{
-                float: left;
-                width: 66.666%;
-                padding-right: $margin-mobile;
-            }
-        }
-    }
+			&:after {
+				content: "";
+				display: table;
+				clear: both;
+			}
+
+			.unafila {
+				float: left;
+				width: 33.333%;
+				padding-right: $margin-mobile;
+			}
+			.dosfilas {
+				float: left;
+				width: 66.666%;
+				padding-right: $margin-mobile;
+			}
+		}
+	}
 }
